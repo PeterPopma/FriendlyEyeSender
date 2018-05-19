@@ -1,0 +1,1210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\enterprise\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\bin\Debug\FriendlyEyeSender.exe">
+   <Modules>
+    <Module Name="friendlyeyesender.exe">
+     <Messages>
+      <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+       <Issue Name="NoStrongName" Certainty="95" Level="CriticalError">Sign 'FriendlyEyeSender.exe' with a strong name key.</Issue>
+      </Message>
+      <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Error">Mark 'FriendlyEyeSender.exe' with CLSCompliant(true) because it exposes externally visible types.</Issue>
+      </Message>
+      <Message TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Warning">Because assembly 'FriendlyEyeSender.exe' contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Issue>
+      </Message>
+     </Messages>
+     <Namespaces>
+      <Namespace Name="FriendlyEyeSender">
+       <Types>
+        <Type Name="Camera" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(VideoSource.IVideoSource)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender" File="Camera.cs" Line="74">In externally visible method 'Camera.Camera(IVideoSource)', validate parameter 'source' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#video_NewFrame(System.Object,VideoSource.CameraEventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender" File="Camera.cs" Line="155">Modify 'Camera.video_NewFrame(object, CameraEventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DetectionObject" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Rectangle" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#set_Rectangle(System.Drawing.Rectangle)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender" File="DetectionObject.cs" Line="23">'DetectionObject.Rectangle.set(Rectangle)' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DetectionSystem" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#analysisTime" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'DetectionSystem.analysisTime' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Analyze()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender" File="DetectionSystem.cs" Line="115">Modify 'DetectionSystem.Analyze()' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="k" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender" File="DetectionSystem.cs" Line="112">'DetectionSystem.Analyze()' declares a variable, 'k', of type 'int', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DetectionObjects" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#set_DetectionObjects(System.Collections.Generic.List`1&lt;FriendlyEyeSender.DetectionObject&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender" File="DetectionSystem.cs" Line="20">'DetectionSystem.DetectionObjects.set(List&lt;DetectionObject&gt;)' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#Threshold" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_Threshold()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender" File="DetectionSystem.cs" Line="24">'DetectionSystem.Threshold.get()' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IRestService" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetBoard()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="50" Level="Warning">Change 'IRestService.GetBoard()' to a property if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Program" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#formMain" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Consider making 'Program.formMain' non-public or a constant.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Main(System.String[])" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="args" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender" File="Program.cs" Line="23">Parameter 'args' of 'Program.Main(string[])' is never used. Remove the parameter or use it in the method body.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RestService" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#parentForm" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'RestService.parentForm' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="FriendlyEyeSender.CustomControls">
+       <Types>
+        <Type Name="Display" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#contentManager" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'Display.contentManager' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#parentForm" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'Display.parentForm' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateFrame()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="Display.cs" Line="56">The 'this' parameter (or 'Me' in Visual Basic) of 'Display.UpdateFrame()' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="GradientButton" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Messages>
+          <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+           <Issue Certainty="75" Level="Warning">'GradientButton' is an internal class that is apparently never instantiated. If so, remove the code from the assembly. If this class is intended to contain only static methods, consider adding a private constructor to prevent the compiler from generating a default constructor.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#OnPaint(System.Windows.Forms.PaintEventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientButton.cs" Line="63">In method 'GradientButton.OnPaint(PaintEventArgs)', object 'foreBrush' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'foreBrush' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientButton.cs" Line="33">In method 'GradientButton.OnPaint(PaintEventArgs)', call System.IDisposable.Dispose on object 'brush' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientButton.cs" Line="38">In method 'GradientButton.OnPaint(PaintEventArgs)', call System.IDisposable.Dispose on object 'brush' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientButton.cs" Line="47">In method 'GradientButton.OnPaint(PaintEventArgs)', call System.IDisposable.Dispose on object 'brush' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientButton.cs" Line="55">In method 'GradientButton.OnPaint(PaintEventArgs)', call System.IDisposable.Dispose on object 'brush' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientButton.cs" Line="34">In externally visible method 'GradientButton.OnPaint(PaintEventArgs)', validate parameter 'e' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="GradientPanel" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Messages>
+          <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+           <Issue Certainty="75" Level="Warning">'GradientPanel' is an internal class that is apparently never instantiated. If so, remove the code from the assembly. If this class is intended to contain only static methods, consider adding a private constructor to prevent the compiler from generating a default constructor.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#OnPaintBackground(System.Windows.Forms.PaintEventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientPanel.cs" Line="22">In method 'GradientPanel.OnPaintBackground(PaintEventArgs)', call System.IDisposable.Dispose on object 'brush' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientPanel.cs" Line="28">In method 'GradientPanel.OnPaintBackground(PaintEventArgs)', call System.IDisposable.Dispose on object 'brush' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientPanel.cs" Line="26">In externally visible method 'GradientPanel.OnPaintBackground(PaintEventArgs)', validate parameter 'e' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="GradientPanel2" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Messages>
+          <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+           <Issue Certainty="75" Level="Warning">'GradientPanel2' is an internal class that is apparently never instantiated. If so, remove the code from the assembly. If this class is intended to contain only static methods, consider adding a private constructor to prevent the compiler from generating a default constructor.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#OnPaintBackground(System.Windows.Forms.PaintEventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientPanel2.cs" Line="22">In method 'GradientPanel2.OnPaintBackground(PaintEventArgs)', call System.IDisposable.Dispose on object 'brush' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientPanel2.cs" Line="29">In method 'GradientPanel2.OnPaintBackground(PaintEventArgs)', call System.IDisposable.Dispose on object 'brush' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="GradientPanel2.cs" Line="26">In externally visible method 'GradientPanel2.OnPaintBackground(PaintEventArgs)', validate parameter 'e' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="OutlineLabel" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#OnPaint(System.Windows.Forms.PaintEventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="OutlineLabel.cs" Line="25">In method 'OutlineLabel.OnPaint(PaintEventArgs)', object 'new Pen(this.OutlineForeColor, this.OutlineWidth)' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'new Pen(this.OutlineForeColor, this.OutlineWidth)' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="OutlineLabel.cs" Line="23">In method 'OutlineLabel.OnPaint(PaintEventArgs)', call System.IDisposable.Dispose on object 'new SolidBrush(this.BackColor)' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\CustomControls" File="OutlineLabel.cs" Line="23">In externally visible method 'OutlineLabel.OnPaint(PaintEventArgs)', validate parameter 'e' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="FriendlyEyeSender.Forms">
+       <Types>
+        <Type Name="FormCapture" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetSystemMetrics(System.Int32)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'FormCapture.GetSystemMetrics(int)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Because it is a P/Invoke method, 'FormCapture.GetSystemMetrics(int)' should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormCapture.Designer.cs" Line="34">Method 'FormCapture.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "FormCapture".</Issue>
+            </Message>
+            <Message Id="FormCapture" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormCapture.Designer.cs" Line="34">Correct the spelling of the unrecognized token 'FormCapture' in the literal '"FormCapture"'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetWindowPos(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'FormCapture.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="MarkBooleanPInvokeArgumentsWithMarshalAs" Category="Microsoft.Interoperability" CheckId="CA1414" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="Return" Certainty="95" Level="Warning">Add the MarshalAsAttribute to the return type of P/Invoke 'FormCapture.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)'. If the corresponding unmanaged return type is a 4-byte Win32 'BOOL', use MarshalAs(UnmanagedType.Bool). For a 1-byte C++ 'bool', use MarshalAs(UnmanagedType.U1).</Issue>
+            </Message>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Because it is a P/Invoke method, 'FormCapture.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)' should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="FormMain" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#buttonSetup_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormMain.cs" Line="39">In method 'FormMain.buttonSetup_Click(object, EventArgs)', call System.IDisposable.Dispose on object 'formSetup' before all references to it are out of scope.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetSystemMetrics(System.Int32)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'FormMain.GetSystemMetrics(int)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Because it is a P/Invoke method, 'FormMain.GetSystemMetrics(int)' should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormMain.Designer.cs" Line="88">Method 'FormMain.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Address:".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormMain.Designer.cs" Line="124">Method 'FormMain.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "FormMain".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormMain.Designer.cs" Line="98">Method 'FormMain.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Name:".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormMain.Designer.cs" Line="78">Method 'FormMain.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Prevent theft".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormMain.Designer.cs" Line="64">Method 'FormMain.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Purpose:".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormMain.Designer.cs" Line="107">Method 'FormMain.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Setup".</Issue>
+            </Message>
+            <Message Id="FormMain" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormMain.Designer.cs" Line="124">Correct the spelling of the unrecognized token 'FormMain' in the literal '"FormMain"'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetWindowPos(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'FormMain.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="MarkBooleanPInvokeArgumentsWithMarshalAs" Category="Microsoft.Interoperability" CheckId="CA1414" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="Return" Certainty="95" Level="Warning">Add the MarshalAsAttribute to the return type of P/Invoke 'FormMain.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)'. If the corresponding unmanaged return type is a 4-byte Win32 'BOOL', use MarshalAs(UnmanagedType.Bool). For a 1-byte C++ 'bool', use MarshalAs(UnmanagedType.U1).</Issue>
+            </Message>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Because it is a P/Invoke method, 'FormMain.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)' should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="FormSetup" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#camera_NewFrame(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="177">Modify 'FormSetup.camera_NewFrame(object, EventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateNewReferenceImage()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="189">'FormSetup.CreateNewReferenceImage()' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="205">Modify 'FormSetup.CreateNewReferenceImage()' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetSystemMetrics(System.Int32)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'FormSetup.GetSystemMetrics(int)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Because it is a P/Invoke method, 'FormSetup.GetSystemMetrics(int)' should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="261">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "&lt; Home".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="152">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "&lt;".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="138">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "&gt;".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="236">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Danger:".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="168">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Exclude Regions".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="181">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Exclude Regions".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="286">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "FormSetup".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="195">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Include Regions".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="60">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Ready!".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="124">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Remove".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="110">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Reset Reference".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="223">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Threshold:".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="210">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "X".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="249">Method 'FormSetup.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "XXXX".</Issue>
+            </Message>
+            <Message Id="FormSetup" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.Designer.cs" Line="286">Correct the spelling of the unrecognized token 'FormSetup' in the literal '"FormSetup"'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OnTimedEventUpdateScreen(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="k" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="58">'FormSetup.OnTimedEventUpdateScreen(object, EventArgs)' declares a variable, 'k', of type 'int', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+            </Message>
+            <Message Id="System.UInt64.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="54">Because the behavior of 'ulong.ToString()' could vary based on the current user's locale settings, replace this call in 'FormSetup.OnTimedEventUpdateScreen(object, EventArgs)' with a call to 'ulong.ToString(IFormatProvider)'. If the result of 'ulong.ToString(IFormatProvider)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#pictureBoxCamera_Paint(System.Object,System.Windows.Forms.PaintEventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="272">In method 'FormSetup.pictureBoxCamera_Paint(object, PaintEventArgs)', call System.IDisposable.Dispose on object 'bigWhitePen' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="274">In method 'FormSetup.pictureBoxCamera_Paint(object, PaintEventArgs)', call System.IDisposable.Dispose on object 'blackPen' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="254">In method 'FormSetup.pictureBoxCamera_Paint(object, PaintEventArgs)', call System.IDisposable.Dispose on object 'drawBrush' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="253">In method 'FormSetup.pictureBoxCamera_Paint(object, PaintEventArgs)', call System.IDisposable.Dispose on object 'drawFont' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="271">In method 'FormSetup.pictureBoxCamera_Paint(object, PaintEventArgs)', call System.IDisposable.Dispose on object 'limePen' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="270">In method 'FormSetup.pictureBoxCamera_Paint(object, PaintEventArgs)', call System.IDisposable.Dispose on object 'redPen' before all references to it are out of scope.</Issue>
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="273">In method 'FormSetup.pictureBoxCamera_Paint(object, PaintEventArgs)', call System.IDisposable.Dispose on object 'whitePen' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="262">Modify 'FormSetup.pictureBoxCamera_Paint(object, PaintEventArgs)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#setCaptureDevice()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.MessageBox.Show(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="115">Method 'FormSetup.setCaptureDevice()' passes a literal string as parameter 'text' of a call to 'MessageBox.Show(string)'. Retrieve the following string(s) from a resource table instead: "No video source available!".</Issue>
+            </Message>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="103">'FormSetup.setCaptureDevice()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+            </Message>
+            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="115">Change 'FormSetup.setCaptureDevice()' to call the MessageBox.Show overload that specifies MessageBoxOptions, and make sure to set MessageBoxOptions.RightAlign and MessageBoxOptions.RtlReading if RightToLeft is set to RightToLeft.Yes on the parent control.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetupTimer()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotUseTimersThatPreventPowerStateChanges" Category="Microsoft.Mobility" CheckId="CA1601" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="47">Modify the call to 'Timer.Interval.set(int)' in method 'FormSetup.SetupTimer()' to set the timer interval to a value that's greater than or equal to one second.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetWindowPos(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'FormSetup.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+            <Message TypeName="MarkBooleanPInvokeArgumentsWithMarshalAs" Category="Microsoft.Interoperability" CheckId="CA1414" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="Return" Certainty="95" Level="Warning">Add the MarshalAsAttribute to the return type of P/Invoke 'FormSetup.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)'. If the corresponding unmanaged return type is a 4-byte Win32 'BOOL', use MarshalAs(UnmanagedType.Bool). For a 1-byte C++ 'bool', use MarshalAs(UnmanagedType.U1).</Issue>
+            </Message>
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="CriticalWarning">Because it is a P/Invoke method, 'FormSetup.SetWindowPos(IntPtr, IntPtr, int, int, int, int, int)' should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#soundPlayer" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">It appears that field 'FormSetup.soundPlayer' is never used or is only ever assigned to. Use this field or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateRegionButtons()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\Forms" File="FormSetup.cs" Line="357">Because the behavior of 'int.ToString()' could vary based on the current user's locale settings, replace this call in 'FormSetup.UpdateRegionButtons()' with a call to 'int.ToString(IFormatProvider)'. If the result of 'int.ToString(IFormatProvider)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="VideoSource">
+       <Types>
+        <Type Name="ByteArrayUtils" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Messages>
+          <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+           <Issue Certainty="75" Level="Warning">'ByteArrayUtils' is an internal class that is apparently never instantiated. If so, remove the code from the assembly. If this class is intended to contain only static methods, consider adding a private constructor to prevent the compiler from generating a default constructor.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Compare(System.Byte[],System.Byte[],System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="ByteArrayUtils.cs" Line="17">'ByteArrayUtils.Compare(byte[], byte[], int)' appears to have no upstream public or protected callers.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="CameraEventHandler" Kind="Delegate" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+           <Issue Certainty="95" Level="Error">Remove 'CameraEventHandler' and replace its usage with EventHandler&lt;T&gt;</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="CaptureDevice" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'CaptureDevice' because it creates members of the following IDisposable types: 'ManualResetEvent'. If 'CaptureDevice' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#WorkerThread()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="233">In method 'CaptureDevice.WorkerThread()', call System.IDisposable.Dispose on object 'mt' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="281">Modify 'CaptureDevice.WorkerThread()' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IGraphBuilder.AddFilter(dshow.Core.IBaseFilter,System.String)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="226">'CaptureDevice.WorkerThread()' calls 'IGraphBuilder.AddFilter(IBaseFilter, string)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="227">'CaptureDevice.WorkerThread()' calls 'IGraphBuilder.AddFilter(IBaseFilter, string)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IGraphBuilder.Render(dshow.Core.IPin)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="255">'CaptureDevice.WorkerThread()' calls 'IGraphBuilder.Render(IPin)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IMediaControl.Run" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="272">'CaptureDevice.WorkerThread()' calls 'IMediaControl.Run()' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IMediaControl.StopWhenReady" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="278">'CaptureDevice.WorkerThread()' calls 'IMediaControl.StopWhenReady()' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.ISampleGrabber.SetBufferSamples(System.Boolean)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="258">'CaptureDevice.WorkerThread()' calls 'ISampleGrabber.SetBufferSamples(bool)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.ISampleGrabber.SetCallback(dshow.Core.ISampleGrabberCB,System.Int32)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="260">'CaptureDevice.WorkerThread()' calls 'ISampleGrabber.SetCallback(ISampleGrabberCB, int)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.ISampleGrabber.SetMediaType(dshow.Core.AMMediaType)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="237">'CaptureDevice.WorkerThread()' calls 'ISampleGrabber.SetMediaType(AMMediaType)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.ISampleGrabber.SetOneShot(System.Boolean)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="259">'CaptureDevice.WorkerThread()' calls 'ISampleGrabber.SetOneShot(bool)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IVideoWindow.put_AutoShow(System.Boolean)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="264">'CaptureDevice.WorkerThread()' calls 'IVideoWindow.put_AutoShow(bool)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="181">'CaptureDevice.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="211">'CaptureDevice.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="218">'CaptureDevice.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="241">'CaptureDevice.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="CaptureDevice+Grabber" Kind="Class" Accessibility="Private" ExternallyVisible="False">
+         <Members>
+          <Member Name="#BufferCB(System.Double,System.IntPtr,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="356">In method 'CaptureDevice.Grabber.BufferCB(double, IntPtr, int)', object 'img' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'img' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message Id="dshow.Core.Win32.memcpy(System.Int32,System.Int32,System.Int32)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="373">'CaptureDevice.Grabber.BufferCB(double, IntPtr, int)' calls 'Win32.memcpy(int, int, int)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Height" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_Height()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="336">'CaptureDevice.Grabber.Height.get()' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#Width" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_Width()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="CaptureDevice.cs" Line="330">'CaptureDevice.Grabber.Width.get()' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IVideoSource" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Login" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Login" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Replace the term 'Login' in member name 'IVideoSource.Login' with the preferred alternate 'LogOn'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Stop()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Stop" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Rename virtual/interface member 'IVideoSource.Stop()' so that it no longer conflicts with the reserved language keyword 'Stop'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="JPEGStream" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="JPEG" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'JPEG' in type name 'JPEGStream' by changing it to 'Jpeg'.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+           <Issue Name="TypeNoAlternate" Certainty="95" Level="CriticalError">Rename type name 'JPEGStream' so that it does not end in 'Stream'.</Issue>
+          </Message>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'JPEGStream' because it creates members of the following IDisposable types: 'ManualResetEvent'. If 'JPEGStream' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#WorkerThread()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="JPEGStream.cs" Line="257">In method 'JPEGStream.WorkerThread()', call System.IDisposable.Dispose on object 'new MemoryStream(buffer, 0, total)' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="JPEGStream.cs" Line="288">Modify 'JPEGStream.WorkerThread()' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message TypeName="PassSystemUriObjectsInsteadOfStrings" Category="Microsoft.Usage" CheckId="CA2234" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="JPEGStream.cs" Line="191">Modify 'JPEGStream.WorkerThread()' to call 'WebRequest.Create(Uri)' instead of 'WebRequest.Create(string)'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="JPEGStream.cs" Line="191">Modify 'JPEGStream.WorkerThread()' to call 'WebRequest.Create(Uri)' instead of 'WebRequest.Create(string)'.</Issue>
+            </Message>
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="JPEGStream.cs" Line="215">Because the behavior of 'int.ToString()' could vary based on the current user's locale settings, replace this call in 'JPEGStream.WorkerThread()' with a call to 'int.ToString(IFormatProvider)'. If the result of 'int.ToString(IFormatProvider)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="JPEGStream.cs" Line="222">Because the behavior of 'int.ToString()' could vary based on the current user's locale settings, replace this call in 'JPEGStream.WorkerThread()' with a call to 'int.ToString(IFormatProvider)'. If the result of 'int.ToString(IFormatProvider)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="JPEGStream.cs" Line="218">Replace the call to 'string.operator !=(string, string)' in 'JPEGStream.WorkerThread()' with a call to 'String.IsNullOrEmpty'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="MJPEGStream" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="MJPEG" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'MJPEG' in type name 'MJPEGStream' by changing it to 'Mjpeg'.</Issue>
+          </Message>
+          <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+           <Issue Name="TypeNoAlternate" Certainty="95" Level="CriticalError">Rename type name 'MJPEGStream' so that it does not end in 'Stream'.</Issue>
+          </Message>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'MJPEGStream' because it creates members of the following IDisposable types: 'ManualResetEvent'. If 'MJPEGStream' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#WorkerThread()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="185">'MJPEGStream.WorkerThread()' has a cyclomatic complexity of 27. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="340">In method 'MJPEGStream.WorkerThread()', call System.IDisposable.Dispose on object 'new MemoryStream(buffer, start, (stop - start))' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="379">Modify 'MJPEGStream.WorkerThread()' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="222">'MJPEGStream.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="244">'MJPEGStream.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+            </Message>
+            <Message TypeName="PassSystemUriObjectsInsteadOfStrings" Category="Microsoft.Usage" CheckId="CA2234" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="185">Modify 'MJPEGStream.WorkerThread()' to call 'WebRequest.Create(Uri)' instead of 'WebRequest.Create(string)'.</Issue>
+            </Message>
+            <Message Id="delimiter2" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="197">'MJPEGStream.WorkerThread()' declares a variable, 'delimiter2', of type 'byte[]', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+            </Message>
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="215">Because the behavior of 'int.ToString()' could vary based on the current user's locale settings, replace this call in 'MJPEGStream.WorkerThread()' with a call to 'int.ToString(IFormatProvider)'. If the result of 'int.ToString(IFormatProvider)' will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+            <Message Id="System.String.IndexOf(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="221">Because the behavior of 'string.IndexOf(string)' could vary based on the current user's locale settings, replace this call in 'MJPEGStream.WorkerThread()' with a call to 'string.IndexOf(string, StringComparison)'. If the result of 'string.IndexOf(string, StringComparison)' will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.</Issue>
+            </Message>
+            <Message Id="System.String.IndexOf(System.String,System.Int32)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="226">Because the behavior of 'string.IndexOf(string, int)' could vary based on the current user's locale settings, replace this call in 'MJPEGStream.WorkerThread()' with a call to 'string.IndexOf(string, int, StringComparison)'. If the result of 'string.IndexOf(string, int, StringComparison)' will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.</Issue>
+            </Message>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="MJPEGStream.cs" Line="211">Replace the call to 'string.operator !=(string, string)' in 'MJPEGStream.WorkerThread()' with a call to 'String.IsNullOrEmpty'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="VideoFileSource" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'VideoFileSource' because it creates members of the following IDisposable types: 'ManualResetEvent'. If 'VideoFileSource' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#WorkerThread()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoFileSource.cs" Line="157">In method 'VideoFileSource.WorkerThread()', object 'aviReader' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'aviReader' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoFileSource.cs" Line="194">Modify 'VideoFileSource.WorkerThread()' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="span" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoFileSource.cs" Line="185">'VideoFileSource.WorkerThread()' declares a variable, 'span', of type 'TimeSpan', which is never used or is only assigned to. Use this variable or remove it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="VideoStream" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+           <Issue Name="TypeNoAlternate" Certainty="95" Level="CriticalError">Rename type name 'VideoStream' so that it does not end in 'Stream'.</Issue>
+          </Message>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'VideoStream' because it creates members of the following IDisposable types: 'ManualResetEvent'. If 'VideoStream' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#WorkerThread()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="217">In method 'VideoStream.WorkerThread()', call System.IDisposable.Dispose on object 'mt' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="284">Modify 'VideoStream.WorkerThread()' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IFileSourceFilter.Load(System.String,dshow.Core.AMMediaType)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="224">'VideoStream.WorkerThread()' calls 'IFileSourceFilter.Load(string, AMMediaType)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IGraphBuilder.AddFilter(dshow.Core.IBaseFilter,System.String)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="213">'VideoStream.WorkerThread()' calls 'IGraphBuilder.AddFilter(IBaseFilter, string)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="214">'VideoStream.WorkerThread()' calls 'IGraphBuilder.AddFilter(IBaseFilter, string)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IGraphBuilder.Render(dshow.Core.IPin)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="241">'VideoStream.WorkerThread()' calls 'IGraphBuilder.Render(IPin)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IMediaControl.Run" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="260">'VideoStream.WorkerThread()' calls 'IMediaControl.Run()' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IMediaControl.StopWhenReady" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="281">'VideoStream.WorkerThread()' calls 'IMediaControl.StopWhenReady()' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IMediaEventEx.FreeEventParams(System.Int32,System.Int32,System.Int32)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="270">'VideoStream.WorkerThread()' calls 'IMediaEventEx.FreeEventParams(int, int, int)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.ISampleGrabber.SetBufferSamples(System.Boolean)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="244">'VideoStream.WorkerThread()' calls 'ISampleGrabber.SetBufferSamples(bool)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.ISampleGrabber.SetCallback(dshow.Core.ISampleGrabberCB,System.Int32)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="246">'VideoStream.WorkerThread()' calls 'ISampleGrabber.SetCallback(ISampleGrabberCB, int)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.ISampleGrabber.SetMediaType(dshow.Core.AMMediaType)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="220">'VideoStream.WorkerThread()' calls 'ISampleGrabber.SetMediaType(AMMediaType)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.ISampleGrabber.SetOneShot(System.Boolean)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="245">'VideoStream.WorkerThread()' calls 'ISampleGrabber.SetOneShot(bool)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message Id="dshow.Core.IVideoWindow.put_AutoShow(System.Boolean)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="250">'VideoStream.WorkerThread()' calls 'IVideoWindow.put_AutoShow(bool)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="Breaking">
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="187">'VideoStream.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="196">'VideoStream.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="205">'VideoStream.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="228">'VideoStream.WorkerThread()' creates an exception of type 'ApplicationException', an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="VideoStream+Grabber" Kind="Class" Accessibility="Private" ExternallyVisible="False">
+         <Members>
+          <Member Name="#BufferCB(System.Double,System.IntPtr,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="363">In method 'VideoStream.Grabber.BufferCB(double, IntPtr, int)', object 'img' is not disposed along all exception paths. Call System.IDisposable.Dispose on object 'img' before all references to it are out of scope.</Issue>
+            </Message>
+            <Message Id="dshow.Core.Win32.memcpy(System.Int32,System.Int32,System.Int32)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Name="HResultOrErrorCode" Certainty="95" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="380">'VideoStream.Grabber.BufferCB(double, IntPtr, int)' calls 'Win32.memcpy(int, int, int)' but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Height" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_Height()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="343">'VideoStream.Grabber.Height.get()' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#Width" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_Width()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\VideoSource" File="VideoStream.cs" Line="337">'VideoStream.Grabber.Width.get()' appears to have no upstream public or protected callers.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="WinFormsGraphicsDevice">
+       <Types>
+        <Type Name="GraphicsDeviceControl" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#EndDraw()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\WinformsGraphicsDevice" File="GraphicsDeviceControl.cs" Line="196">Modify 'GraphicsDeviceControl.EndDraw()' to catch a more specific exception than 'object' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HandleDeviceReset()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\WinformsGraphicsDevice" File="GraphicsDeviceControl.cs" Line="243">Modify 'GraphicsDeviceControl.HandleDeviceReset()' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OnPaint(System.Windows.Forms.PaintEventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\WinformsGraphicsDevice" File="GraphicsDeviceControl.cs" Line="131">In externally visible method 'GraphicsDeviceControl.OnPaint(PaintEventArgs)', validate parameter 'e' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PaintUsingSystemDrawing(System.Drawing.Graphics,System.String)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Projects\FriendlyEyeSender\FriendlyEyeSender\WinformsGraphicsDevice" File="GraphicsDeviceControl.cs" Line="260">In externally visible method 'GraphicsDeviceControl.PaintUsingSystemDrawing(Graphics, string)', validate parameter 'graphics' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="GraphicsDeviceService" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-05-19 19:33:04Z" FixCategory="NonBreaking">
+           <Issue Name="NonBreaking" Certainty="95" Level="CriticalError">Implement IDisposable on 'GraphicsDeviceService' because it creates members of the following IDisposable types: 'PresentationParameters', 'GraphicsDevice'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+   <Name>Assemblies should have valid strong names</Name>
+   <Description>Either the assembly has no strong name, an invalid one, or the strong name is valid only because of the computer configuration. The assembly should not be deployed in this state. The most common causes of this are: 1) The assembly's contents were modified after it was signed. 2) The signing process failed. 3) The assembly was delay-signed. 4) A registry key existed that allowed the check to pass (where it would not have otherwise).</Description>
+   <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182127.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502">
+   <Name>Avoid excessive complexity</Name>
+   <Description>Method implementations that are exceedingly complex increase the challenge of understanding and maintaining code.</Description>
+   <Resolution Name="Default">{0} has a cyclomatic complexity of {1}. Rewrite or refactor the method to reduce complexity to {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182212.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="maintainabilityrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Avoid uncalled private code</Name>
+   <Description>There is uncalled code that is not externally visible and is not a known runtime entry point. If this violation fires in error, please send a problem report to the Visual Studio Code Analysis team.</Description>
+   <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182264.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812">
+   <Name>Avoid uninstantiated internal classes</Name>
+   <Description>An internal class was detected that is apparently never instantiated. This rule does not attempt to detect late-bound creation and will generate false positives if instances of a type are only created in this way (for example, by means of Activator.CreateInstance or by passing the type as an argument to a TypeConverter constructor).</Description>
+   <Resolution Name="Default">{0} is an internal class that is apparently never instantiated. If so, remove the code from the assembly. If this class is intended to contain only static methods, consider adding a private constructor to prevent the compiler from generating a default constructor.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182265.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+   <Name>Avoid unused private fields</Name>
+   <Description>Private fields were detected that do not appear to be accessed within the assembly. If this violation fires in error, please send a problem report to the Visual Studio Code Analysis team.</Description>
+   <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245042.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Dispose objects before losing scope" Category="Microsoft.Reliability" CheckId="CA2000">
+   <Name>Dispose objects before losing scope</Name>
+   <Description>If a disposable object is not explicitly disposed before all references to it are out of scope, the object will be disposed at some indeterminate time when the garbage collector runs the finalizer of the object. Because an exceptional event might occur that will prevent the finalizer of the object from running, the object should be explicitly disposed instead.</Description>
+   <Resolution Name="ExceptionEdge">In method {0}, object {1} is not disposed along all exception paths. Call System.IDisposable.Dispose on object {1} before all references to it are out of scope.</Resolution>
+   <Resolution Name="NonExceptionEdge">In method {0}, call System.IDisposable.Dispose on object {1} before all references to it are out of scope.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182289.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303">
+   <Name>Do not pass literals as localized parameters</Name>
+   <Description>Literal strings that are embedded in source code are difficult to localize. Avoid passing literal strings as arguments in circumstances where a localized string is generally expected.</Description>
+   <Resolution Name="KnownValue">Method {0} passes a literal string as parameter '{1}' of a call to {2}. Retrieve the following string(s) from a resource table instead: {3}.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182187.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Do not catch general exception types</Name>
+   <Description>You should not catch Exception or SystemException. Catching generic exception types can hide run-time problems from the library user, and can complicate debugging. You should catch only those exceptions that you can handle gracefully.</Description>
+   <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182137.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806">
+   <Name>Do not ignore method results</Name>
+   <Description>The result of methods that return new instances of strings should be assigned to a variable and subsequently used. If the result of a method that creates a new object, such as String.ToLower(), is not assigned to a variable, the call is wasted.</Description>
+   <Resolution Name="HResultOrErrorCode">{0} calls {1} but does not use the HRESULT or error code that the method returns. This could lead to unexpected behavior in error conditions or low-resource situations. Use the result in a conditional statement, assign the result to a variable, or pass it as an argument to another method.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182273.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201">
+   <Name>Do not raise reserved exception types</Name>
+   <Description>User code should not create and raise exceptions of certain types that are reserved by the runtime or which are of a too general exception type. Exception types that are too general include Exception, SystemException, and ApplicationException. Exception types that are reserved by the runtime include ThreadAbortException, OutOfMemoryException, ExecutionEngineException, and IndexOutOfRangeException.</Description>
+   <Resolution Name="TooGeneric">{0} creates an exception of type {1}, an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182338.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotUseTimersThatPreventPowerStateChanges" Category="Microsoft.Mobility" CheckId="CA1601">
+   <Name>Do not use timers that prevent power state changes</Name>
+   <Description>Do not poll more often than or utilize timers that fire more frequently than once per second. Higher frequency periodic activity will keep the CPU busy and interfere with power-saving idle timers that turn off the display and hard disks.</Description>
+   <Resolution Name="Default">Modify the call to {0} in method {1} to set the timer interval to a value that's greater than or equal to one second.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182230.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="mobilityrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+   <Name>Identifiers should be cased correctly</Name>
+   <Description>Type, namespace, and member identifiers are Pascal-cased. Parameter identifiers are camel-cased. Two letter acronyms within these identifiers should be upper-cased, for example, use System.IO instead of System.Io. Acronyms of three or more letters should be Pascal-cased, for example, use System.Xml instead of System.XML. The pascal-casing convention capitalizes the first letter of each word, as in BackColor. The camel-casing convention formats the first letter of the first word in lowercase and capitalizes the first letter of all subsequent words, as in backgroundColor. Although it may be common practice for some two letter acronyms to not be fully capitalized, violations of this rule should not be excluded for this reason. For example, 'DbConnection', is common but incorrect; use DBConnection. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="Type">Correct the casing of '{0}' in type name {1} by changing it to '{2}'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182240.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711">
+   <Name>Identifiers should not have incorrect suffix</Name>
+   <Description>Types that do not extend certain base types should not use reserved name suffixes. Types and members should not use 'Ex' or 'New' to distinguish them from an earlier version of the same API, instead, use a numeric suffix such as '2' or provide a more meaningful suffix. Concrete type implementations and members should not end 'Impl'. Members instead, should either consider using the suggested alternate 'Core' in replacement of 'Impl' or avoid any suffix at all.</Description>
+   <Resolution Name="TypeNoAlternate">Rename type name {0} so that it does not end in '{1}'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182247.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="namingrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716">
+   <Name>Identifiers should not match keywords</Name>
+   <Description>Identifiers which conflict with reserved language keywords should be avoided. Using a reserved keyword as an identifier makes it harder for consumers in other languages to use your API.</Description>
+   <Resolution Name="Member">Rename virtual/interface member {0} so that it no longer conflicts with the reserved language keyword '{1}'. Using a reserved keyword as the name of a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182248.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204">
+   <Name>Literals should be spelled correctly</Name>
+   <Description>This rule parses the literal string into words, tokenizing compound words, and checks the spelling of each word/token.</Description>
+   <Resolution Name="Default">Correct the spelling of the unrecognized token '{0}' in the literal '{1}'.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/bb264488.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+   <Name>Mark assemblies with CLSCompliantAttribute</Name>
+   <Description>Assemblies should explicitly state their CLS compliance using the CLSCompliant attribute. An assembly without this attribute is not CLS-compliant. Assemblies, modules, and types can be CLS-compliant even if some parts of the assembly, module, or type are not CLS-compliant. The following rules apply: 1) If the element is marked CLSCompliant, any noncompliant members must have the CLSCompliant attribute present with its argument set to false. 2) A comparable CLS-compliant alternative member must be supplied for each member that is not CLS-compliant.</Description>
+   <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182156.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824">
+   <Name>Mark assemblies with NeutralResourcesLanguageAttribute</Name>
+   <Description>The NeutralResourcesLanguage attribute informs the ResourceManager of the language used to render the neutral culture's resources for an assembly. When looking up resources in the same culture as the neutral resources language, the ResourceManager automatically uses the resources located in the main assembly, instead of searching for a satellite assembly with the current user interface culture for the current thread. This will improve lookup performance for the first resource you load and can reduce your working set.</Description>
+   <Resolution Name="Default">Because assembly {0} contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb385967.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkBooleanPInvokeArgumentsWithMarshalAs" Category="Microsoft.Interoperability" CheckId="CA1414">
+   <Name>Mark boolean P/Invoke arguments with MarshalAs</Name>
+   <Description>All boolean P/Invoke parameters and return types should be explicitly marked with the MarshalAs attribute. By default, the system will marshal all booleans as 4-byte UnmanagedType.Bool. This is the correct behavior for Win32 'BOOL' arguments but incorrect for C++ 'bool' arguments, which should be marshaled as 1-byte UnmanagedType.U1. For code maintainability reasons, always explicitly specify the marshaling information for boolean arguments and return values.</Description>
+   <Resolution Name="Return">Add the MarshalAsAttribute to the return type of P/Invoke {0}. If the corresponding unmanaged return type is a 4-byte Win32 'BOOL', use MarshalAs(UnmanagedType.Bool). For a 1-byte C++ 'bool', use MarshalAs(UnmanagedType.U1).</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182206.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="interoperabilityrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+   <Name>Mark members as static</Name>
+   <Description>Methods which do not access instance data or call instance methods can be marked as static (Shared in Visual Basic). After doing so, the compiler will emit non-virtual call sites to these members which will prevent a check at runtime for each call that ensures the current object pointer is non-null. This can result in a measurable performance gain for performance-sensitive code. In some cases, the failure to access the current object instance represents a correctness issue.</Description>
+   <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245046.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060">
+   <Name>Move P/Invokes to NativeMethods class</Name>
+   <Description>This type contains members with the DllImport attribute. Members with the DllImport attribute should be contained in classes named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Description>
+   <Resolution Name="Default">Because it is a P/Invoke method, {0} should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182161.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211">
+   <Name>Non-constant fields should not be visible</Name>
+   <Description>Static fields should be constant unless you carefully manage access to the field using locks. Using static variables without making them thread safe can compromise execution state. This rule applies to managed code libraries. If the analyzed assembly is an application, it is usually safe to exclude violations of this rule.</Description>
+   <Resolution Name="Default">Consider making {0} non-public or a constant.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182353.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="PassSystemUriObjectsInsteadOfStrings" Category="Microsoft.Usage" CheckId="CA2234">
+   <Name>Pass System.Uri objects instead of strings</Name>
+   <Description>If there are two overloads one taking System.Uri and one taking System.String, library code should never call the string-based overload.</Description>
+   <Resolution Name="Default">Modify {0} to call {1} instead of {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182360.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
+   <Name>Remove unused locals</Name>
+   <Description>Remove locals that are not used or are only assigned to in method implementations.</Description>
+   <Resolution Name="Default">{0} declares a variable, {1}, of type {2}, which is never used or is only assigned to. Use this variable or remove it.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182278.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+   <Name>Review unused parameters</Name>
+   <Description>Review parameters in non-virtual methods that are not used in the method body to ensure no correctness exists around failure to access them. Unused parameters incur maintenance and performance costs. Sometimes a violation of this rule can point to an implementation bug in the method (i.e. the parameter should actually have been used in the method body). Exclude warnings of this rule if the parameter has to exist because of backward compatibility.</Description>
+   <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182268.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+   <Name>Specify IFormatProvider</Name>
+   <Description>If an overload exists that takes an IFormatProvider argument, it should always be called in favor of an overload that does not. Some methods in the runtime convert a value to or from a string representation and take a string parameter that contains one or more characters, called format specifiers, which indicate how the value is to be converted. If the meaning of the format specifier varies by culture, a formatting object supplies the actual characters used in the string representation. In scenarios where sorting and comparison behavior should never change between cultures, specify CultureInfo.InvariantCulture, otherwise, specify CultureInfo.CurrentCulture.</Description>
+   <Resolution Name="IFormatProviderAlternateString">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify {3} as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify {4}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182190.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="globalizationrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300">
+   <Name>Specify MessageBoxOptions</Name>
+   <Description>In order to run correctly on right-to-left systems, all calls to MessageBox.Show should use the overload that specifies MessageBoxOptions as an argument. Programs should detect whether they are running on a right-to-left system at run-time and pass the appropriate MessageBoxOptions value in order to display correctly.</Description>
+   <Resolution Name="Default">Change {0} to call the MessageBox.Show overload that specifies MessageBoxOptions, and make sure to set MessageBoxOptions.RightAlign and MessageBoxOptions.RtlReading if RightToLeft is set to RightToLeft.Yes on the parent control.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182191.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="globalizationrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307">
+   <Name>Specify StringComparison</Name>
+   <Description>If an overload exists that takes a StringComparison argument, it should always be called in favor of an overload that does not.</Description>
+   <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb386080.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="globalizationrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820">
+   <Name>Test for empty strings using string length</Name>
+   <Description>To test for empty strings, check if String.Length is equal to zero. Constructs such as "".Equals(someString) and String.Empty.Equals(someString) are less efficient than testing the string length. Replace these with checks for someString.Length == 0.</Description>
+   <Resolution Name="IsNullOrEmpty">Replace the call to {0} in {1} with a call to 'String.IsNullOrEmpty'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182279.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+   <Name>Types that own disposable fields should be disposable</Name>
+   <Description>Types that declare disposable members should also implement IDisposable. If the type does not own any unmanaged resources, do not implement a finalizer on it.</Description>
+   <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   <Resolution Name="NonBreaking">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182172.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003">
+   <Name>Use generic event handler instances</Name>
+   <Description>Do not declare new delegates to be used as event handlers when targeting a version of the .NET Framework that supports generics. Use an instance EventHandler&lt;T&gt; instead.</Description>
+   <Resolution Name="Default">Remove {0} and replace its usage with EventHandler&lt;T&gt;</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182178.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726">
+   <Name>Use preferred terms</Name>
+   <Description>Use preferred terms over deprecated alternates.</Description>
+   <Resolution Name="Member">Replace the term '{0}' in member name {1} with the preferred alternate '{2}'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182258.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024">
+   <Name>Use properties where appropriate</Name>
+   <Description>Properties should be used instead of Get/Set methods in most situations. Methods are preferable to properties in the following situations: the operation is a conversion, is expensive or has an observable side-effect; the order of execution is important; calling the member twice in succession creates different results; a member is static but returns a mutable value; or the member returns an array.</Description>
+   <Resolution Name="Default">Change {0} to a property if appropriate.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182181.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062">
+   <Name>Validate arguments of public methods</Name>
+   <Description>All reference arguments passed to externally visible methods should be checked against null (Nothing in VB). If appropriate, throw a System.ArgumentNullException when the argument is null.</Description>
+   <Resolution Name="Default">In externally visible method {0}, validate parameter '{1}' before using it.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182182.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

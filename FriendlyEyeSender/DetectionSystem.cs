@@ -9,21 +9,28 @@ namespace FriendlyEyeSender
 {
     class DetectionSystem
     {
+        const int NUM_REFERENCE_SAMPLES = 5;
         long analysisTime;
-        int threshold;
+        int sizeAnalysisChunks = 1;
         bool useMask;
         bool excludeRegions;
         bool[][] mask;
         int videoWidth;
         int videoHeight;
+        int analysisMode;
+        int numReferenceValues;
+        int threshold;
 
         public List<DetectionObject> DetectionObjects { get; set; } = new List<DetectionObject>();
         public Bitmap BitmapReference { get; set; }
         public Bitmap BitmapCamera { get; set; }
 
-        public int Threshold { get => threshold; set => threshold = value; }
+        public int SizeAnalysisChunks { get => sizeAnalysisChunks; set => sizeAnalysisChunks = value; }
         public bool ExcludeRegions { get => excludeRegions; set => excludeRegions = value; }
-        public ulong DangerValue { get; set; }
+        public int DangerValue { get; set; }
+        public int DangerValueReference { get; set; }
+        public int NumReferenceValues { get => numReferenceValues; set => numReferenceValues = value; }
+        public int Threshold { get => threshold; set => threshold = value; }
 
         public void UpdateMask()
         {
@@ -85,31 +92,59 @@ namespace FriendlyEyeSender
                 byte* PtrFirstPixelCamera = (byte*)bitmapDataCamera.Scan0;
                 byte* PtrFirstPixelReference = (byte*)bitmapDataReference.Scan0;
 
-                for (int y=0; y < videoHeight; y++)
+                for (int y = 0; y < videoHeight - (sizeAnalysisChunks - 1); y+= sizeAnalysisChunks)
                 {
-                    byte* currentLineCamera = PtrFirstPixelCamera + (y * bitmapDataCamera.Stride);
-                    byte* currentLineReference = PtrFirstPixelReference + (y * bitmapDataCamera.Stride);
-
-                    for (int x = 0; x < videoWidth; x++)
+                    for (int x = 0; x < videoWidth - (sizeAnalysisChunks - 1); x += sizeAnalysisChunks)
                     {
-                        if (!useMask || mask[y][x] == true)
+                        int redCamera = 0, redReference = 0;
+                        int greenCamera = 0, greenReference = 0;
+                        int blueCamera = 0, blueReference = 0;
+                        for (int y_sub = 0; y_sub < sizeAnalysisChunks; y_sub++)
                         {
-                            int offsetX = x * bytesPerPixel;
+                            int y_abs = y + y_sub;
+                            byte* currentLineCamera = PtrFirstPixelCamera + (y_abs * bitmapDataCamera.Stride);
+                            byte* currentLineReference = PtrFirstPixelReference + (y_abs * bitmapDataCamera.Stride);
+                            for (int x_sub = 0; x_sub < sizeAnalysisChunks; x_sub++)
+                            {
+                                int x_abs = x + x_sub;
+                                if (!useMask || mask[y_abs][x_abs] == true)
+                                {
+                                    int offsetX = x_abs * bytesPerPixel;
 
-                            totalDifferenceWithReference += (ulong)Math.Abs(currentLineCamera[offsetX] - currentLineReference[offsetX]);
-                            totalDifferenceWithReference += (ulong)Math.Abs(currentLineCamera[offsetX + 1] - currentLineReference[offsetX + 1]);
-                            totalDifferenceWithReference += (ulong)Math.Abs(currentLineCamera[offsetX + 2] - currentLineReference[offsetX + 2]);
+                                    redCamera += currentLineCamera[offsetX];
+                                    redReference += currentLineReference[offsetX];
+                                    greenCamera += currentLineCamera[offsetX+1];
+                                    greenReference += currentLineReference[offsetX+1];
+                                    blueCamera += currentLineCamera[offsetX+2];
+                                    blueReference += currentLineReference[offsetX+2];
 
-                            numScannedPixels++;
+                                    numScannedPixels++;
+                                }
+                            }
                         }
+                        totalDifferenceWithReference += (ulong)Math.Abs(redCamera - redReference);
+                        totalDifferenceWithReference += (ulong)Math.Abs(greenCamera - greenReference);
+                        totalDifferenceWithReference += (ulong)Math.Abs(blueCamera - blueReference);
                     }
                 }
 
-                DangerValue = totalDifferenceWithReference / numScannedPixels;
-
-                if(DangerValue <= 0 || DangerValue >10000)
+                if (numReferenceValues < NUM_REFERENCE_SAMPLES)
                 {
-                    int k = 0;
+                    numReferenceValues++;
+                    DangerValue = 0;
+                    DangerValueReference += (int)(totalDifferenceWithReference / numScannedPixels);
+                    if (numReferenceValues == NUM_REFERENCE_SAMPLES)
+                    {
+                        DangerValueReference /= NUM_REFERENCE_SAMPLES;
+                    }
+                }
+                else
+                {
+                    DangerValue = DangerValueReference-((int)(totalDifferenceWithReference / numScannedPixels));
+                    if(DangerValue<0)
+                    {
+                        DangerValue = -DangerValue;
+                    }
                 }
 
             } catch (Exception ex)

@@ -30,7 +30,7 @@
         {
             this.buttonReady = new System.Windows.Forms.Button();
             this.pictureBoxCamera = new System.Windows.Forms.PictureBox();
-            this.numericUpDownThreshold = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSensitivity = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonRemoveRegion = new System.Windows.Forms.Button();
             this.buttonNextRegion = new System.Windows.Forms.Button();
@@ -38,12 +38,16 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.buttonExclude = new System.Windows.Forms.Button();
             this.buttonWatch = new System.Windows.Forms.Button();
-            this.outlineLabelCurrentObject = new FriendlyEyeSender.CustomControls.OutlineLabel();
-            this.outlineLabelThreshold = new FriendlyEyeSender.CustomControls.OutlineLabel();
-            this.outlineLabelDanger = new FriendlyEyeSender.CustomControls.OutlineLabel();
-            this.outlineLabelDangerValue = new FriendlyEyeSender.CustomControls.OutlineLabel();
             this.buttonHome = new System.Windows.Forms.Button();
+            this.numericUpDownThreshold = new System.Windows.Forms.NumericUpDown();
+            this.outlineLabelDangerValue = new FriendlyEyeSender.CustomControls.OutlineLabel();
+            this.outlineLabelDangerLabel = new FriendlyEyeSender.CustomControls.OutlineLabel();
+            this.outlineLabelSensitivity = new FriendlyEyeSender.CustomControls.OutlineLabel();
+            this.outlineLabelDanger = new FriendlyEyeSender.CustomControls.OutlineLabel();
+            this.outlineLabelThreshold = new FriendlyEyeSender.CustomControls.OutlineLabel();
+            this.outlineLabelCurrentObject = new FriendlyEyeSender.CustomControls.OutlineLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSensitivity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThreshold)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,27 +79,27 @@
             this.pictureBoxCamera.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxCamera_MouseMove);
             this.pictureBoxCamera.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxCamera_MouseUp);
             // 
-            // numericUpDownThreshold
+            // numericUpDownSensitivity
             // 
-            this.numericUpDownThreshold.AutoSize = true;
-            this.numericUpDownThreshold.BackColor = System.Drawing.Color.Black;
-            this.numericUpDownThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownThreshold.ForeColor = System.Drawing.Color.Yellow;
-            this.numericUpDownThreshold.Location = new System.Drawing.Point(335, 29);
-            this.numericUpDownThreshold.Minimum = new decimal(new int[] {
+            this.numericUpDownSensitivity.AutoSize = true;
+            this.numericUpDownSensitivity.BackColor = System.Drawing.Color.Black;
+            this.numericUpDownSensitivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownSensitivity.ForeColor = System.Drawing.Color.Yellow;
+            this.numericUpDownSensitivity.Location = new System.Drawing.Point(536, 29);
+            this.numericUpDownSensitivity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDownThreshold.Name = "numericUpDownThreshold";
-            this.numericUpDownThreshold.Size = new System.Drawing.Size(137, 71);
-            this.numericUpDownThreshold.TabIndex = 2;
-            this.numericUpDownThreshold.Value = new decimal(new int[] {
-            60,
+            this.numericUpDownSensitivity.Name = "numericUpDownSensitivity";
+            this.numericUpDownSensitivity.Size = new System.Drawing.Size(137, 71);
+            this.numericUpDownSensitivity.TabIndex = 2;
+            this.numericUpDownSensitivity.Value = new decimal(new int[] {
+            100,
             0,
             0,
             0});
-            this.numericUpDownThreshold.ValueChanged += new System.EventHandler(this.numericUpDownThreshold_ValueChanged);
+            this.numericUpDownSensitivity.ValueChanged += new System.EventHandler(this.numericUpDownThreshold_ValueChanged);
             // 
             // button1
             // 
@@ -117,7 +121,7 @@
             this.buttonRemoveRegion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRemoveRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRemoveRegion.ForeColor = System.Drawing.Color.Yellow;
-            this.buttonRemoveRegion.Location = new System.Drawing.Point(1504, 688);
+            this.buttonRemoveRegion.Location = new System.Drawing.Point(1504, 682);
             this.buttonRemoveRegion.Name = "buttonRemoveRegion";
             this.buttonRemoveRegion.Size = new System.Drawing.Size(335, 121);
             this.buttonRemoveRegion.TabIndex = 12;
@@ -196,58 +200,6 @@
             this.buttonWatch.UseVisualStyleBackColor = false;
             this.buttonWatch.Click += new System.EventHandler(this.buttonWatch_Click);
             // 
-            // outlineLabelCurrentObject
-            // 
-            this.outlineLabelCurrentObject.AutoSize = true;
-            this.outlineLabelCurrentObject.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outlineLabelCurrentObject.ForeColor = System.Drawing.Color.Yellow;
-            this.outlineLabelCurrentObject.Location = new System.Drawing.Point(1643, 855);
-            this.outlineLabelCurrentObject.Name = "outlineLabelCurrentObject";
-            this.outlineLabelCurrentObject.OutlineForeColor = System.Drawing.Color.Black;
-            this.outlineLabelCurrentObject.OutlineWidth = 2F;
-            this.outlineLabelCurrentObject.Size = new System.Drawing.Size(65, 64);
-            this.outlineLabelCurrentObject.TabIndex = 17;
-            this.outlineLabelCurrentObject.Text = "X";
-            // 
-            // outlineLabelThreshold
-            // 
-            this.outlineLabelThreshold.AutoSize = true;
-            this.outlineLabelThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outlineLabelThreshold.ForeColor = System.Drawing.Color.Yellow;
-            this.outlineLabelThreshold.Location = new System.Drawing.Point(30, 31);
-            this.outlineLabelThreshold.Name = "outlineLabelThreshold";
-            this.outlineLabelThreshold.OutlineForeColor = System.Drawing.Color.Black;
-            this.outlineLabelThreshold.OutlineWidth = 2F;
-            this.outlineLabelThreshold.Size = new System.Drawing.Size(293, 64);
-            this.outlineLabelThreshold.TabIndex = 9;
-            this.outlineLabelThreshold.Text = "Threshold:";
-            // 
-            // outlineLabelDanger
-            // 
-            this.outlineLabelDanger.AutoSize = true;
-            this.outlineLabelDanger.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outlineLabelDanger.ForeColor = System.Drawing.Color.Yellow;
-            this.outlineLabelDanger.Location = new System.Drawing.Point(91, 117);
-            this.outlineLabelDanger.Name = "outlineLabelDanger";
-            this.outlineLabelDanger.OutlineForeColor = System.Drawing.Color.Black;
-            this.outlineLabelDanger.OutlineWidth = 2F;
-            this.outlineLabelDanger.Size = new System.Drawing.Size(227, 64);
-            this.outlineLabelDanger.TabIndex = 8;
-            this.outlineLabelDanger.Text = "Danger:";
-            // 
-            // outlineLabelDangerValue
-            // 
-            this.outlineLabelDangerValue.AutoSize = true;
-            this.outlineLabelDangerValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outlineLabelDangerValue.ForeColor = System.Drawing.Color.Yellow;
-            this.outlineLabelDangerValue.Location = new System.Drawing.Point(324, 117);
-            this.outlineLabelDangerValue.Name = "outlineLabelDangerValue";
-            this.outlineLabelDangerValue.OutlineForeColor = System.Drawing.Color.Black;
-            this.outlineLabelDangerValue.OutlineWidth = 2F;
-            this.outlineLabelDangerValue.Size = new System.Drawing.Size(176, 64);
-            this.outlineLabelDangerValue.TabIndex = 7;
-            this.outlineLabelDangerValue.Text = "XXXX";
-            // 
             // buttonHome
             // 
             this.buttonHome.BackColor = System.Drawing.Color.Black;
@@ -262,11 +214,117 @@
             this.buttonHome.UseVisualStyleBackColor = false;
             this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
             // 
+            // numericUpDownThreshold
+            // 
+            this.numericUpDownThreshold.AutoSize = true;
+            this.numericUpDownThreshold.BackColor = System.Drawing.Color.Black;
+            this.numericUpDownThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownThreshold.ForeColor = System.Drawing.Color.Yellow;
+            this.numericUpDownThreshold.Location = new System.Drawing.Point(536, 113);
+            this.numericUpDownThreshold.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownThreshold.Name = "numericUpDownThreshold";
+            this.numericUpDownThreshold.Size = new System.Drawing.Size(137, 71);
+            this.numericUpDownThreshold.TabIndex = 19;
+            this.numericUpDownThreshold.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownThreshold.ValueChanged += new System.EventHandler(this.numericUpDownThreshold_ValueChanged_1);
+            // 
+            // outlineLabelDangerValue
+            // 
+            this.outlineLabelDangerValue.AutoSize = true;
+            this.outlineLabelDangerValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outlineLabelDangerValue.ForeColor = System.Drawing.Color.Yellow;
+            this.outlineLabelDangerValue.Location = new System.Drawing.Point(263, 204);
+            this.outlineLabelDangerValue.Name = "outlineLabelDangerValue";
+            this.outlineLabelDangerValue.OutlineForeColor = System.Drawing.Color.Black;
+            this.outlineLabelDangerValue.OutlineWidth = 2F;
+            this.outlineLabelDangerValue.Size = new System.Drawing.Size(176, 64);
+            this.outlineLabelDangerValue.TabIndex = 7;
+            this.outlineLabelDangerValue.Text = "XXXX";
+            // 
+            // outlineLabelDangerLabel
+            // 
+            this.outlineLabelDangerLabel.AutoSize = true;
+            this.outlineLabelDangerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outlineLabelDangerLabel.ForeColor = System.Drawing.Color.Yellow;
+            this.outlineLabelDangerLabel.Location = new System.Drawing.Point(30, 204);
+            this.outlineLabelDangerLabel.Name = "outlineLabelDangerLabel";
+            this.outlineLabelDangerLabel.OutlineForeColor = System.Drawing.Color.Black;
+            this.outlineLabelDangerLabel.OutlineWidth = 2F;
+            this.outlineLabelDangerLabel.Size = new System.Drawing.Size(227, 64);
+            this.outlineLabelDangerLabel.TabIndex = 8;
+            this.outlineLabelDangerLabel.Text = "Danger:";
+            // 
+            // outlineLabelSensitivity
+            // 
+            this.outlineLabelSensitivity.AutoSize = true;
+            this.outlineLabelSensitivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outlineLabelSensitivity.ForeColor = System.Drawing.Color.Yellow;
+            this.outlineLabelSensitivity.Location = new System.Drawing.Point(30, 31);
+            this.outlineLabelSensitivity.Name = "outlineLabelSensitivity";
+            this.outlineLabelSensitivity.OutlineForeColor = System.Drawing.Color.Black;
+            this.outlineLabelSensitivity.OutlineWidth = 2F;
+            this.outlineLabelSensitivity.Size = new System.Drawing.Size(298, 64);
+            this.outlineLabelSensitivity.TabIndex = 9;
+            this.outlineLabelSensitivity.Text = "Sensitivity:";
+            // 
+            // outlineLabelDanger
+            // 
+            this.outlineLabelDanger.AutoSize = true;
+            this.outlineLabelDanger.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outlineLabelDanger.ForeColor = System.Drawing.Color.Red;
+            this.outlineLabelDanger.Location = new System.Drawing.Point(30, 290);
+            this.outlineLabelDanger.Name = "outlineLabelDanger";
+            this.outlineLabelDanger.OutlineForeColor = System.Drawing.Color.Black;
+            this.outlineLabelDanger.OutlineWidth = 2F;
+            this.outlineLabelDanger.Size = new System.Drawing.Size(433, 120);
+            this.outlineLabelDanger.TabIndex = 21;
+            this.outlineLabelDanger.Text = "Danger!";
+            // 
+            // outlineLabelThreshold
+            // 
+            this.outlineLabelThreshold.AutoSize = true;
+            this.outlineLabelThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outlineLabelThreshold.ForeColor = System.Drawing.Color.Yellow;
+            this.outlineLabelThreshold.Location = new System.Drawing.Point(30, 115);
+            this.outlineLabelThreshold.Name = "outlineLabelThreshold";
+            this.outlineLabelThreshold.OutlineForeColor = System.Drawing.Color.Black;
+            this.outlineLabelThreshold.OutlineWidth = 2F;
+            this.outlineLabelThreshold.Size = new System.Drawing.Size(491, 64);
+            this.outlineLabelThreshold.TabIndex = 20;
+            this.outlineLabelThreshold.Text = "Danger Threshold:";
+            // 
+            // outlineLabelCurrentObject
+            // 
+            this.outlineLabelCurrentObject.AutoSize = true;
+            this.outlineLabelCurrentObject.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outlineLabelCurrentObject.ForeColor = System.Drawing.Color.Yellow;
+            this.outlineLabelCurrentObject.Location = new System.Drawing.Point(1643, 855);
+            this.outlineLabelCurrentObject.Name = "outlineLabelCurrentObject";
+            this.outlineLabelCurrentObject.OutlineForeColor = System.Drawing.Color.Black;
+            this.outlineLabelCurrentObject.OutlineWidth = 2F;
+            this.outlineLabelCurrentObject.Size = new System.Drawing.Size(65, 64);
+            this.outlineLabelCurrentObject.TabIndex = 17;
+            this.outlineLabelCurrentObject.Text = "X";
+            // 
             // FormSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.outlineLabelDangerValue);
+            this.Controls.Add(this.outlineLabelDangerLabel);
+            this.Controls.Add(this.outlineLabelSensitivity);
+            this.Controls.Add(this.outlineLabelDanger);
+            this.Controls.Add(this.outlineLabelThreshold);
+            this.Controls.Add(this.numericUpDownThreshold);
             this.Controls.Add(this.buttonHome);
             this.Controls.Add(this.outlineLabelCurrentObject);
             this.Controls.Add(this.buttonWatch);
@@ -275,16 +333,14 @@
             this.Controls.Add(this.buttonNextRegion);
             this.Controls.Add(this.buttonRemoveRegion);
             this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.outlineLabelThreshold);
-            this.Controls.Add(this.outlineLabelDanger);
-            this.Controls.Add(this.outlineLabelDangerValue);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.numericUpDownThreshold);
+            this.Controls.Add(this.numericUpDownSensitivity);
             this.Controls.Add(this.buttonReady);
             this.Controls.Add(this.pictureBoxCamera);
             this.Name = "FormSetup";
             this.Text = "FormSetup";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSensitivity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThreshold)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -295,10 +351,10 @@
 
         private System.Windows.Forms.Button buttonReady;
         private System.Windows.Forms.PictureBox pictureBoxCamera;
-        private System.Windows.Forms.NumericUpDown numericUpDownThreshold;
+        private System.Windows.Forms.NumericUpDown numericUpDownSensitivity;
         private System.Windows.Forms.Button button1;
-        private CustomControls.OutlineLabel outlineLabelDanger;
-        private CustomControls.OutlineLabel outlineLabelThreshold;
+        private CustomControls.OutlineLabel outlineLabelDangerLabel;
+        private CustomControls.OutlineLabel outlineLabelSensitivity;
         private System.Windows.Forms.Button buttonRemoveRegion;
         private System.Windows.Forms.Button buttonNextRegion;
         private System.Windows.Forms.Button buttonPreviousRegion;
@@ -308,5 +364,8 @@
         private CustomControls.OutlineLabel outlineLabelCurrentObject;
         private System.Windows.Forms.Button buttonHome;
         internal CustomControls.OutlineLabel outlineLabelDangerValue;
+        private CustomControls.OutlineLabel outlineLabelThreshold;
+        private System.Windows.Forms.NumericUpDown numericUpDownThreshold;
+        private CustomControls.OutlineLabel outlineLabelDanger;
     }
 }

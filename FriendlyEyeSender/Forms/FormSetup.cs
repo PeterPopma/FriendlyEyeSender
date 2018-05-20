@@ -53,9 +53,13 @@ namespace FriendlyEyeSender.Forms
         {
             outlineLabelDangerValue.Text = detectionSystem.DangerValue.ToString();
 
-            if (detectionSystem.DangerValue <= 0 || detectionSystem.DangerValue > 10000)
+            if (detectionSystem.DangerValue > detectionSystem.Threshold)
             {
-                int k = 0;
+                outlineLabelDanger.Visible = true;
+            }
+            else
+            {
+                outlineLabelDanger.Visible = false;
             }
         }
 
@@ -65,22 +69,27 @@ namespace FriendlyEyeSender.Forms
             InitializeComponent();
             setCaptureDevice();
             SetupTimer();
-            outlineLabelThreshold.Parent = pictureBoxCamera;
-            outlineLabelThreshold.BackColor = Color.Transparent;
-            outlineLabelDanger.Parent = pictureBoxCamera;
-            outlineLabelDanger.BackColor = Color.Transparent;
+            outlineLabelSensitivity.Parent = pictureBoxCamera;
+            outlineLabelSensitivity.BackColor = Color.Transparent;
+            outlineLabelDangerLabel.Parent = pictureBoxCamera;
+            outlineLabelDangerLabel.BackColor = Color.Transparent;
             outlineLabelDangerValue.Parent = pictureBoxCamera;
             outlineLabelDangerValue.BackColor = Color.Transparent;
             outlineLabelCurrentObject.Parent = pictureBoxCamera;
             outlineLabelCurrentObject.BackColor = Color.Transparent;
+            outlineLabelThreshold.Parent = pictureBoxCamera;
+            outlineLabelThreshold.BackColor = Color.Transparent;
+            outlineLabelDanger.Parent = pictureBoxCamera;
+            outlineLabelDanger.BackColor = Color.Transparent;
+            UpdateRegionButtons();
+            detectionSystem.Threshold = Convert.ToInt32(numericUpDownThreshold.Value); 
 
             // Go Fullscreen
-            /*
             WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.None;
             TopMost = true;
             SetWindowPos(Handle, IntPtr.Zero, 0, 0, GetSystemMetrics(0), GetSystemMetrics(1), 64);
-            */
+            
         }
 
         private void buttonSetup_Click(object sender, EventArgs e)
@@ -168,6 +177,8 @@ namespace FriendlyEyeSender.Forms
                         {
                             createNewReferenceImage = false;
                             detectionSystem.BitmapReference = new Bitmap(camera.LastFrame);
+                            detectionSystem.DangerValueReference = 0;
+                            detectionSystem.NumReferenceValues = 0;
                         }
                         detectionSystem.BitmapCamera = camera.LastFrame;
                         detectionSystem.Analyze();
@@ -183,34 +194,10 @@ namespace FriendlyEyeSender.Forms
             }
 
             pictureBoxCamera.Invalidate();
+            this.SetStyle(ControlStyles.UserPaint, true);
+            Refresh();
         }
 
-        private void CreateNewReferenceImage()
-        {
-            if (camera != null)
-            {
-                try
-                {
-                    camera.Lock();
-
-                    // save frame
-                    if (camera.LastFrame != null)
-                    {
-                        lock (locker)
-                        {
-                            detectionSystem.BitmapReference = new Bitmap(camera.LastFrame);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                }
-                finally
-                {
-                    camera.Unlock();
-                }
-            }
-        }
 
         // Open video source
         private void OpenVideoSource(IVideoSource source)
@@ -232,85 +219,13 @@ namespace FriendlyEyeSender.Forms
             this.Cursor = Cursors.Default;
         }
 
-        private void pictureBoxCamera_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle rc = pictureBoxCamera.ClientRectangle;
-
-            if (camera != null)
-            {
-                try
-                {
-                    camera.Lock();
-
-                    // draw frame
-                    if (camera.LastFrame != null)
-                    {
-                        e.Graphics.DrawImage(camera.LastFrame, rc.X, rc.Y, rc.Width - 1, rc.Height - 1);
-                    }
-                    else
-                    {
-                        // Create font and brush
-                        Font drawFont = new Font("Arial", 12);
-                        SolidBrush drawBrush = new SolidBrush(Color.White);
-
-                        e.Graphics.DrawString("Connecting ...", drawFont, drawBrush, new PointF(5, 5));
-
-                        drawBrush.Dispose();
-                        drawFont.Dispose();
-                    }
-                }
-                catch (Exception)
-                {
-                }
-                finally
-                {
-                    camera.Unlock();
-                }
-
-                Pen redPen = new Pen(Color.Red, 6);
-                Pen limePen = new Pen(Color.Lime, 6);
-                Pen bigWhitePen = new Pen(Color.White, 6);
-                Pen whitePen = new Pen(Color.White, 2);
-                Pen blackPen = new Pen(Color.Black, 2);
-                if (mouseDown)
-                {
-                    Rectangle window = new Rectangle(
-                        Math.Min(mouseDownPoint.X, mouseUpPoint.X),
-                        Math.Min(mouseDownPoint.Y, mouseUpPoint.Y),
-                        Math.Abs(mouseDownPoint.X - mouseUpPoint.X),
-                        Math.Abs(mouseDownPoint.Y - mouseUpPoint.Y));
-                    e.Graphics.DrawRectangle(bigWhitePen, window);
-                    e.Graphics.DrawRectangle(blackPen, window);
-                }
-                foreach(DetectionObject detectionObject in detectionSystem.DetectionObjects)
-                {
-                    if (detectionSystem.ExcludeRegions)
-                    {
-                        e.Graphics.DrawRectangle(redPen, RectCameraToScreen(detectionObject.Rectangle));
-                    }
-                    else
-                    {
-                        e.Graphics.DrawRectangle(limePen, RectCameraToScreen(detectionObject.Rectangle));
-                    }
-                    if (detectionObject == currentObject)
-                    {
-                        e.Graphics.DrawRectangle(whitePen, RectCameraToScreen(detectionObject.Rectangle));
-                    }
-                    else
-                    {
-                        e.Graphics.DrawRectangle(blackPen, RectCameraToScreen(detectionObject.Rectangle));
-                    }
-                }
-            }
-        }
-
-
         private void buttonWatch_Click(object sender, EventArgs e)
         {
             buttonWatch.ForeColor = Color.Lime;
             buttonExclude.ForeColor = Color.LightGray;
             detectionSystem.ExcludeRegions = false;
             detectionSystem.UpdateMask();
+            createNewReferenceImage = true;     // seems to be necessary
         }
 
         private void buttonExclude_Click(object sender, EventArgs e)
@@ -319,6 +234,7 @@ namespace FriendlyEyeSender.Forms
             buttonExclude.ForeColor = Color.Red;
             detectionSystem.ExcludeRegions = true;
             detectionSystem.UpdateMask();
+            createNewReferenceImage = true;     // seems to be necessary
         }
 
         private void pictureBoxCamera_MouseDown(object sender, MouseEventArgs e)
@@ -350,6 +266,7 @@ namespace FriendlyEyeSender.Forms
             Cursor = Cursors.Default;
             UpdateRegionButtons();
             detectionSystem.UpdateMask();
+            createNewReferenceImage = true;     // seems to be necessary
         }
 
         private void UpdateRegionButtons()
@@ -405,6 +322,7 @@ namespace FriendlyEyeSender.Forms
                 UpdateRegionButtons();
             }
             detectionSystem.UpdateMask();
+            createNewReferenceImage = true;     // seems to be necessary
         }
 
         private void buttonHome_Click(object sender, EventArgs e)
@@ -420,7 +338,85 @@ namespace FriendlyEyeSender.Forms
 
         private void numericUpDownThreshold_ValueChanged(object sender, EventArgs e)
         {
+            detectionSystem.SizeAnalysisChunks = 101 - Convert.ToInt32(numericUpDownSensitivity.Value);
+            createNewReferenceImage = true;     // seems to be necessary
+        }
+
+        private void numericUpDownThreshold_ValueChanged_1(object sender, EventArgs e)
+        {
             detectionSystem.Threshold = Convert.ToInt32(numericUpDownThreshold.Value);
+        }
+
+        private void pictureBoxCamera_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle rc = pictureBoxCamera.ClientRectangle;
+
+            if (camera != null)
+            {
+                try
+                {
+                    camera.Lock();
+
+                    // draw frame
+                    if (camera.LastFrame != null)
+                    {
+                        e.Graphics.DrawImage(camera.LastFrame, rc.X, rc.Y, rc.Width - 1, rc.Height - 1);
+                    }
+                    else
+                    {
+                        // Create font and brush
+                        Font drawFont = new Font("Arial", 12);
+                        SolidBrush drawBrush = new SolidBrush(Color.White);
+
+                        e.Graphics.DrawString("Connecting ...", drawFont, drawBrush, new PointF(5, 5));
+
+                        drawBrush.Dispose();
+                        drawFont.Dispose();
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    camera.Unlock();
+                }
+
+                Pen redPen = new Pen(Color.Red, 6);
+                Pen limePen = new Pen(Color.Lime, 6);
+                Pen bigWhitePen = new Pen(Color.White, 6);
+                Pen whitePen = new Pen(Color.White, 2);
+                Pen blackPen = new Pen(Color.Black, 2);
+                if (mouseDown)
+                {
+                    Rectangle window = new Rectangle(
+                        Math.Min(mouseDownPoint.X, mouseUpPoint.X),
+                        Math.Min(mouseDownPoint.Y, mouseUpPoint.Y),
+                        Math.Abs(mouseDownPoint.X - mouseUpPoint.X),
+                        Math.Abs(mouseDownPoint.Y - mouseUpPoint.Y));
+                    e.Graphics.DrawRectangle(bigWhitePen, window);
+                    e.Graphics.DrawRectangle(blackPen, window);
+                }
+                foreach (DetectionObject detectionObject in detectionSystem.DetectionObjects)
+                {
+                    if (detectionSystem.ExcludeRegions)
+                    {
+                        e.Graphics.DrawRectangle(redPen, RectCameraToScreen(detectionObject.Rectangle));
+                    }
+                    else
+                    {
+                        e.Graphics.DrawRectangle(limePen, RectCameraToScreen(detectionObject.Rectangle));
+                    }
+                    if (detectionObject == currentObject)
+                    {
+                        e.Graphics.DrawRectangle(whitePen, RectCameraToScreen(detectionObject.Rectangle));
+                    }
+                    else
+                    {
+                        e.Graphics.DrawRectangle(blackPen, RectCameraToScreen(detectionObject.Rectangle));
+                    }
+                }
+            }
         }
     }
 }

@@ -38,6 +38,7 @@ namespace FriendlyEyeSender.Forms
         {
             FormSetup formSetup = new FormSetup();
             formSetup.MyParent = this;
+            formSetup.DisarmPassword = textBoxDisarmPassword.Text;
             formSetup.Show();
         }
 

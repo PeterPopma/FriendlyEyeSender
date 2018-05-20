@@ -31,7 +31,7 @@
             this.buttonReady = new System.Windows.Forms.Button();
             this.pictureBoxCamera = new System.Windows.Forms.PictureBox();
             this.numericUpDownSensitivity = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCreateReference = new System.Windows.Forms.Button();
             this.buttonRemoveRegion = new System.Windows.Forms.Button();
             this.buttonNextRegion = new System.Windows.Forms.Button();
             this.buttonPreviousRegion = new System.Windows.Forms.Button();
@@ -46,9 +46,14 @@
             this.outlineLabelDanger = new FriendlyEyeSender.CustomControls.OutlineLabel();
             this.outlineLabelThreshold = new FriendlyEyeSender.CustomControls.OutlineLabel();
             this.outlineLabelCurrentObject = new FriendlyEyeSender.CustomControls.OutlineLabel();
+            this.panelDisarm = new System.Windows.Forms.Panel();
+            this.labelCountdown = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSensitivity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThreshold)).BeginInit();
+            this.panelDisarm.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonReady
@@ -101,19 +106,19 @@
             0});
             this.numericUpDownSensitivity.ValueChanged += new System.EventHandler(this.numericUpDownThreshold_ValueChanged);
             // 
-            // button1
+            // buttonCreateReference
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Yellow;
-            this.button1.Location = new System.Drawing.Point(1415, 232);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(474, 68);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Reset Reference";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCreateReference.BackColor = System.Drawing.Color.Black;
+            this.buttonCreateReference.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCreateReference.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreateReference.ForeColor = System.Drawing.Color.Yellow;
+            this.buttonCreateReference.Location = new System.Drawing.Point(1415, 232);
+            this.buttonCreateReference.Name = "buttonCreateReference";
+            this.buttonCreateReference.Size = new System.Drawing.Size(474, 68);
+            this.buttonCreateReference.TabIndex = 6;
+            this.buttonCreateReference.Text = "Reset Reference";
+            this.buttonCreateReference.UseVisualStyleBackColor = false;
+            this.buttonCreateReference.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonRemoveRegion
             // 
@@ -314,11 +319,52 @@
             this.outlineLabelCurrentObject.TabIndex = 17;
             this.outlineLabelCurrentObject.Text = "X";
             // 
+            // panelDisarm
+            // 
+            this.panelDisarm.Controls.Add(this.labelCountdown);
+            this.panelDisarm.Controls.Add(this.textBoxPassword);
+            this.panelDisarm.Controls.Add(this.label1);
+            this.panelDisarm.Location = new System.Drawing.Point(572, 226);
+            this.panelDisarm.Name = "panelDisarm";
+            this.panelDisarm.Size = new System.Drawing.Size(623, 384);
+            this.panelDisarm.TabIndex = 22;
+            // 
+            // labelCountdown
+            // 
+            this.labelCountdown.AutoSize = true;
+            this.labelCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCountdown.ForeColor = System.Drawing.Color.Red;
+            this.labelCountdown.Location = new System.Drawing.Point(252, 251);
+            this.labelCountdown.Name = "labelCountdown";
+            this.labelCountdown.Size = new System.Drawing.Size(122, 120);
+            this.labelCountdown.TabIndex = 2;
+            this.labelCountdown.Text = "X";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(112, 147);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(393, 71);
+            this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(101, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(422, 64);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Enter Password";
+            // 
             // FormSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.panelDisarm);
             this.Controls.Add(this.outlineLabelDangerValue);
             this.Controls.Add(this.outlineLabelDangerLabel);
             this.Controls.Add(this.outlineLabelSensitivity);
@@ -333,7 +379,7 @@
             this.Controls.Add(this.buttonNextRegion);
             this.Controls.Add(this.buttonRemoveRegion);
             this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCreateReference);
             this.Controls.Add(this.numericUpDownSensitivity);
             this.Controls.Add(this.buttonReady);
             this.Controls.Add(this.pictureBoxCamera);
@@ -342,6 +388,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSensitivity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThreshold)).EndInit();
+            this.panelDisarm.ResumeLayout(false);
+            this.panelDisarm.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,7 +400,7 @@
         private System.Windows.Forms.Button buttonReady;
         private System.Windows.Forms.PictureBox pictureBoxCamera;
         private System.Windows.Forms.NumericUpDown numericUpDownSensitivity;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCreateReference;
         private CustomControls.OutlineLabel outlineLabelDangerLabel;
         private CustomControls.OutlineLabel outlineLabelSensitivity;
         private System.Windows.Forms.Button buttonRemoveRegion;
@@ -367,5 +415,9 @@
         private CustomControls.OutlineLabel outlineLabelThreshold;
         private System.Windows.Forms.NumericUpDown numericUpDownThreshold;
         private CustomControls.OutlineLabel outlineLabelDanger;
+        private System.Windows.Forms.Panel panelDisarm;
+        private System.Windows.Forms.Label labelCountdown;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label label1;
     }
 }

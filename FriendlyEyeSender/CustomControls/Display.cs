@@ -17,11 +17,11 @@ namespace FriendlyEyeSender.CustomControls
     {
         ContentManager contentManager;
         SpriteBatch spriteBatch;
-        FormCapture parentForm;
+        FormSetup parentForm;
 
         protected override void Initialize()
         {
-            parentForm = (this.Parent as FormCapture);
+            parentForm = (this.Parent as FormSetup);
             contentManager = new ResourceContentManager(Services, Resources.ResourceManager);
 
             spriteBatch = new SpriteBatch(GraphicsDevice);

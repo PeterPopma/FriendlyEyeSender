@@ -29,6 +29,7 @@ namespace FriendlyEyeSender.Forms
         bool mouseDown = false;
         Point mouseDownPoint = Point.Empty;
         Point mouseUpPoint = Point.Empty;
+        string disarmPassword;
 
         bool createNewReferenceImage = false;
 
@@ -36,10 +37,13 @@ namespace FriendlyEyeSender.Forms
         DetectionObject currentObject = null;
         DetectionSystem detectionSystem = new DetectionSystem();
         bool isProcessing;
+        bool countDownStarted;
 
         SoundPlayer soundPlayer = new SoundPlayer();
+        DateTime timeDangerStarted;
 
         public Form MyParent { get; set; }
+        public string DisarmPassword { get => disarmPassword; set => disarmPassword = value; }
 
         private void SetupTimer()
         {
@@ -52,7 +56,31 @@ namespace FriendlyEyeSender.Forms
 
         private void OnTimedEventUpdateScreen(object sender, EventArgs eArgs)
         {
-            UpdateDangerText();
+            if (buttonReady.Visible)
+            {
+                UpdateDangerText();
+            }
+            else
+            {
+                if (!countDownStarted)
+                {
+                    if (detectionSystem.DangerValue > detectionSystem.Threshold)
+                    {
+                        countDownStarted = true;
+                        panelDisarm.Visible = true;
+                        timeDangerStarted = new DateTime();
+                    }
+                }
+                else
+                {
+                    int secondsInDanger = (DateTime.Now - timeDangerStarted).Seconds;
+                    labelCountdown.Text = secondsInDanger.ToString();
+                    if(secondsInDanger>10)
+                    {
+                        // TODO send pictures
+                    }
+                }
+            }
 
             pictureBoxCamera.Invalidate();
         }
@@ -89,6 +117,7 @@ namespace FriendlyEyeSender.Forms
             outlineLabelThreshold.BackColor = Color.Transparent;
             outlineLabelDanger.Parent = pictureBoxCamera;
             outlineLabelDanger.BackColor = Color.Transparent;
+            panelDisarm.Visible = false;
             UpdateRegionButtons();
             detectionSystem.Threshold = Convert.ToInt32(numericUpDownThreshold.Value); 
 
@@ -105,8 +134,21 @@ namespace FriendlyEyeSender.Forms
         private void buttonSetup_Click(object sender, EventArgs e)
         {
             createNewReferenceImage = true;
-            CloseFile();
-            Close();
+            buttonReady.Visible = false;
+            buttonHome.Visible = false;
+            buttonWatch.Visible = false;
+            buttonExclude.Visible = false;
+            buttonCreateReference.Visible = false;
+            buttonRemoveRegion.Visible = false;
+            buttonPreviousRegion.Visible = false;
+            buttonNextRegion.Visible = false;
+            outlineLabelCurrentObject.Visible = false;
+            outlineLabelSensitivity.Visible = false;
+            outlineLabelDangerLabel.Visible = false;
+            outlineLabelDangerValue.Visible = false;
+            outlineLabelThreshold.Visible = false;
+            numericUpDownSensitivity.Visible = false;
+            numericUpDownThreshold.Visible = false;
         }
 
         private void setCaptureDevice()
@@ -429,6 +471,15 @@ namespace FriendlyEyeSender.Forms
                         e.Graphics.DrawRectangle(blackPen, RectCameraToScreen(detectionObject.Rectangle));
                     }
                 }
+            }
+        }
+
+        private void textBoxPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (disarmPassword.Equals(textBoxPassword.Text))
+            {
+                CloseFile();
+                Close();
             }
         }
     }

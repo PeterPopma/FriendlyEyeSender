@@ -35,6 +35,7 @@ namespace FriendlyEyeSender.Forms
         int currentObjectNumber = 1;
         DetectionObject currentObject = null;
         DetectionSystem detectionSystem = new DetectionSystem();
+        bool isProcessing;
 
         SoundPlayer soundPlayer = new SoundPlayer();
 
@@ -44,12 +45,19 @@ namespace FriendlyEyeSender.Forms
         {
             // Create a timer with a 100 msec interval.
             updateScreenTimer = new System.Windows.Forms.Timer();
-            updateScreenTimer.Interval = 100;
+            updateScreenTimer.Interval = 80;
             updateScreenTimer.Tick += new EventHandler(OnTimedEventUpdateScreen);
             updateScreenTimer.Start();
         }
 
         private void OnTimedEventUpdateScreen(object sender, EventArgs eArgs)
+        {
+            UpdateDangerText();
+
+            pictureBoxCamera.Invalidate();
+        }
+
+        private void UpdateDangerText()
         {
             outlineLabelDangerValue.Text = detectionSystem.DangerValue.ToString();
 
@@ -85,10 +93,12 @@ namespace FriendlyEyeSender.Forms
             detectionSystem.Threshold = Convert.ToInt32(numericUpDownThreshold.Value); 
 
             // Go Fullscreen
+            /*
             WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.None;
             TopMost = true;
             SetWindowPos(Handle, IntPtr.Zero, 0, 0, GetSystemMetrics(0), GetSystemMetrics(1), 64);
+            */
             
         }
 
@@ -164,14 +174,17 @@ namespace FriendlyEyeSender.Forms
         // On new frame
         private void camera_NewFrame(object sender, System.EventArgs e)
         {
+            if (isProcessing)
+                return;
+            isProcessing = true;
+
             try
             {
                 camera.Lock();
 
-                // draw frame
                 if (camera.LastFrame != null)
                 {
-                    lock (locker)
+          //          lock (locker)
                     {
                         if (createNewReferenceImage)
                         {
@@ -185,17 +198,17 @@ namespace FriendlyEyeSender.Forms
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             finally
             {
                 camera.Unlock();
+                isProcessing = false;
             }
 
-            pictureBoxCamera.Invalidate();
-            this.SetStyle(ControlStyles.UserPaint, true);
-            Refresh();
+            // TODO : make sure this gets called on the form thread to prevent queueing messages.. pictureBoxCamera.Invalidate();
         }
 
 

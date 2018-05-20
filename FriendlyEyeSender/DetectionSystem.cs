@@ -159,6 +159,7 @@ namespace FriendlyEyeSender
 
             watch.Stop();
             analysisTime = watch.ElapsedMilliseconds;
+            Console.WriteLine(analysisTime);
         }
     }
 }

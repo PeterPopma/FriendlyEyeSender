@@ -121,6 +121,12 @@ namespace FriendlyEyeSender
         }
 
         // Lock it
+        public bool IsLocked()
+        {
+            return Monitor.IsEntered(this);
+        }
+        
+        // Lock it
         public void Lock()
         {
             Monitor.Enter(this);

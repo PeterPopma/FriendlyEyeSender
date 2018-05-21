@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -24,6 +25,7 @@ namespace FriendlyEyeSender
         public List<DetectionObject> DetectionObjects { get; set; } = new List<DetectionObject>();
         public Bitmap BitmapReference { get; set; }
         public Bitmap BitmapCamera { get; set; }
+        public byte[] BitmapCameraCopy { get; set; }
 
         public int SizeAnalysisChunks { get => sizeAnalysisChunks; set => sizeAnalysisChunks = value; }
         public bool ExcludeRegions { get => excludeRegions; set => excludeRegions = value; }
@@ -157,9 +159,17 @@ namespace FriendlyEyeSender
                 BitmapReference.UnlockBits(bitmapDataReference);
             }
 
-            watch.Stop();
+       //     BitmapCameraCopy = new Bitmap(BitmapCamera);
+//            byte[] result = null;
+            using (MemoryStream stream = new MemoryStream())
+            {
+                BitmapCamera.Save(stream, ImageFormat.Png);
+                BitmapCameraCopy = stream.ToArray();
+            }
+
+                watch.Stop();
             analysisTime = watch.ElapsedMilliseconds;
-            Console.WriteLine(analysisTime);
+//            Console.WriteLine(analysisTime);
         }
     }
 }

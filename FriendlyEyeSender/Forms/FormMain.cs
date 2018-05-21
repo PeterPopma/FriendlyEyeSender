@@ -37,6 +37,9 @@ namespace FriendlyEyeSender.Forms
         private void buttonSetup_Click(object sender, EventArgs e)
         {
             FormSetup formSetup = new FormSetup();
+            formSetup.NameClient = textBoxName.Text;
+            formSetup.Address = textBoxAddress.Text;
+            formSetup.Telephone = textBoxTelephone.Text;
             formSetup.MyParent = this;
             formSetup.DisarmPassword = textBoxDisarmPassword.Text;
             formSetup.Show();

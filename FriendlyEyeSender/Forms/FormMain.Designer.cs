@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,29 +37,32 @@
             this.buttonSetup = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxDisarmPassword = new System.Windows.Forms.TextBox();
+            this.textBoxTelephone = new System.Windows.Forms.TextBox();
+            this.labelTelephone = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox2
+            // textBoxAddress
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(524, 160);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(502, 71);
-            this.textBox2.TabIndex = 15;
+            this.textBoxAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAddress.Location = new System.Drawing.Point(524, 129);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(502, 71);
+            this.textBoxAddress.TabIndex = 15;
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(524, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(502, 71);
-            this.textBox1.TabIndex = 14;
+            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxName.Location = new System.Drawing.Point(524, 32);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(502, 71);
+            this.textBoxName.TabIndex = 14;
+            this.textBoxName.Text = "Peter";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(192, 312);
+            this.label3.Location = new System.Drawing.Point(192, 337);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(252, 64);
             this.label3.TabIndex = 12;
@@ -72,8 +75,9 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Prevent theft",
             "Prevent violence",
+            "Watch for fire",
             "Nanny"});
-            this.comboBox1.Location = new System.Drawing.Point(521, 304);
+            this.comboBox1.Location = new System.Drawing.Point(521, 329);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(505, 72);
             this.comboBox1.TabIndex = 11;
@@ -83,7 +87,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(182, 163);
+            this.label2.Location = new System.Drawing.Point(182, 132);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(249, 64);
             this.label2.TabIndex = 10;
@@ -93,7 +97,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(182, 52);
+            this.label1.Location = new System.Drawing.Point(182, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(193, 64);
             this.label1.TabIndex = 9;
@@ -130,15 +134,35 @@
             this.textBoxDisarmPassword.Size = new System.Drawing.Size(502, 71);
             this.textBoxDisarmPassword.TabIndex = 17;
             // 
+            // textBoxTelephone
+            // 
+            this.textBoxTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTelephone.Location = new System.Drawing.Point(524, 227);
+            this.textBoxTelephone.Name = "textBoxTelephone";
+            this.textBoxTelephone.Size = new System.Drawing.Size(502, 71);
+            this.textBoxTelephone.TabIndex = 19;
+            // 
+            // labelTelephone
+            // 
+            this.labelTelephone.AutoSize = true;
+            this.labelTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTelephone.Location = new System.Drawing.Point(182, 230);
+            this.labelTelephone.Name = "labelTelephone";
+            this.labelTelephone.Size = new System.Drawing.Size(308, 64);
+            this.labelTelephone.TabIndex = 18;
+            this.labelTelephone.Text = "Telephone:";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.textBoxTelephone);
+            this.Controls.Add(this.labelTelephone);
             this.Controls.Add(this.textBoxDisarmPassword);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxAddress);
+            this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
@@ -153,8 +177,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxAddress;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
@@ -162,5 +185,8 @@
         private System.Windows.Forms.Button buttonSetup;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxDisarmPassword;
+        private System.Windows.Forms.TextBox textBoxTelephone;
+        private System.Windows.Forms.Label labelTelephone;
+        internal System.Windows.Forms.TextBox textBoxName;
     }
 }

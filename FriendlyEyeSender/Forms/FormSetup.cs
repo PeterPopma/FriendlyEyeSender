@@ -22,6 +22,8 @@ namespace FriendlyEyeSender.Forms
         [DllImport("user32.dll")]
         private static extern int GetSystemMetrics(int Which);
 
+        const int MAX_NUM_FRAMES_SENT = 10;
+
         private Camera camera = null;
 
         private static System.Windows.Forms.Timer updateScreenTimer;
@@ -31,6 +33,10 @@ namespace FriendlyEyeSender.Forms
         Point mouseUpPoint = Point.Empty;
         string disarmPassword;
 
+        string nameClient;
+        string address;
+        string telephone;
+
         bool createNewReferenceImage = false;
 
         int currentObjectNumber = 1;
@@ -38,12 +44,19 @@ namespace FriendlyEyeSender.Forms
         DetectionSystem detectionSystem = new DetectionSystem();
         bool isProcessing;
         bool countDownStarted;
+        int randomToken;
+
+        RestClient restClient = new RestClient();
 
         SoundPlayer soundPlayer = new SoundPlayer();
         DateTime timeDangerStarted;
+        int numFramesSent;
 
         public Form MyParent { get; set; }
         public string DisarmPassword { get => disarmPassword; set => disarmPassword = value; }
+        public string NameClient { get => nameClient; set => nameClient = value; }
+        public string Address { get => address; set => address = value; }
+        public string Telephone { get => telephone; set => telephone = value; }
 
         private void SetupTimer()
         {
@@ -69,15 +82,23 @@ namespace FriendlyEyeSender.Forms
                         countDownStarted = true;
                         panelDisarm.Visible = true;
                         timeDangerStarted = new DateTime();
+
+                        numFramesSent = 1;
+                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + numFramesSent + "_" + randomToken, NameClient, Telephone, Address, numFramesSent);
                     }
                 }
                 else
                 {
+                    if(numFramesSent<MAX_NUM_FRAMES_SENT)
+                    {
+                        numFramesSent++;
+                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + numFramesSent + "_" + randomToken, NameClient, Telephone, Address, numFramesSent);
+                    }
                     int secondsInDanger = (DateTime.Now - timeDangerStarted).Seconds;
                     labelCountdown.Text = secondsInDanger.ToString();
                     if(secondsInDanger>10)
                     {
-                        // TODO send pictures
+                        // TODO send pictures or confirm police has been warned
                     }
                 }
             }
@@ -119,7 +140,8 @@ namespace FriendlyEyeSender.Forms
             outlineLabelDanger.BackColor = Color.Transparent;
             panelDisarm.Visible = false;
             UpdateRegionButtons();
-            detectionSystem.Threshold = Convert.ToInt32(numericUpDownThreshold.Value); 
+            detectionSystem.Threshold = Convert.ToInt32(numericUpDownThreshold.Value);
+            randomToken = new Random().Next(10000, 99999);
 
             // Go Fullscreen
             /*
@@ -128,7 +150,7 @@ namespace FriendlyEyeSender.Forms
             TopMost = true;
             SetWindowPos(Handle, IntPtr.Zero, 0, 0, GetSystemMetrics(0), GetSystemMetrics(1), 64);
             */
-            
+
         }
 
         private void buttonSetup_Click(object sender, EventArgs e)
@@ -481,6 +503,11 @@ namespace FriendlyEyeSender.Forms
                 CloseFile();
                 Close();
             }
+        }
+
+        private void FormSetup_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseFile();
         }
     }
 }

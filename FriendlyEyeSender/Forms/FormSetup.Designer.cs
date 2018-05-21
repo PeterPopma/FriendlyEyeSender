@@ -40,16 +40,16 @@
             this.buttonWatch = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.numericUpDownThreshold = new System.Windows.Forms.NumericUpDown();
+            this.panelDisarm = new System.Windows.Forms.Panel();
+            this.labelCountdown = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.outlineLabelDangerValue = new FriendlyEyeSender.CustomControls.OutlineLabel();
             this.outlineLabelDangerLabel = new FriendlyEyeSender.CustomControls.OutlineLabel();
             this.outlineLabelSensitivity = new FriendlyEyeSender.CustomControls.OutlineLabel();
             this.outlineLabelDanger = new FriendlyEyeSender.CustomControls.OutlineLabel();
             this.outlineLabelThreshold = new FriendlyEyeSender.CustomControls.OutlineLabel();
             this.outlineLabelCurrentObject = new FriendlyEyeSender.CustomControls.OutlineLabel();
-            this.panelDisarm = new System.Windows.Forms.Panel();
-            this.labelCountdown = new System.Windows.Forms.Label();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSensitivity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThreshold)).BeginInit();
@@ -241,6 +241,46 @@
             0});
             this.numericUpDownThreshold.ValueChanged += new System.EventHandler(this.numericUpDownThreshold_ValueChanged_1);
             // 
+            // panelDisarm
+            // 
+            this.panelDisarm.Controls.Add(this.labelCountdown);
+            this.panelDisarm.Controls.Add(this.textBoxPassword);
+            this.panelDisarm.Controls.Add(this.label1);
+            this.panelDisarm.Location = new System.Drawing.Point(572, 226);
+            this.panelDisarm.Name = "panelDisarm";
+            this.panelDisarm.Size = new System.Drawing.Size(623, 384);
+            this.panelDisarm.TabIndex = 22;
+            // 
+            // labelCountdown
+            // 
+            this.labelCountdown.AutoSize = true;
+            this.labelCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCountdown.ForeColor = System.Drawing.Color.Red;
+            this.labelCountdown.Location = new System.Drawing.Point(252, 251);
+            this.labelCountdown.Name = "labelCountdown";
+            this.labelCountdown.Size = new System.Drawing.Size(122, 120);
+            this.labelCountdown.TabIndex = 2;
+            this.labelCountdown.Text = "X";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(112, 147);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(393, 71);
+            this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(101, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(422, 64);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Enter Password";
+            // 
             // outlineLabelDangerValue
             // 
             this.outlineLabelDangerValue.AutoSize = true;
@@ -319,46 +359,6 @@
             this.outlineLabelCurrentObject.TabIndex = 17;
             this.outlineLabelCurrentObject.Text = "X";
             // 
-            // panelDisarm
-            // 
-            this.panelDisarm.Controls.Add(this.labelCountdown);
-            this.panelDisarm.Controls.Add(this.textBoxPassword);
-            this.panelDisarm.Controls.Add(this.label1);
-            this.panelDisarm.Location = new System.Drawing.Point(572, 226);
-            this.panelDisarm.Name = "panelDisarm";
-            this.panelDisarm.Size = new System.Drawing.Size(623, 384);
-            this.panelDisarm.TabIndex = 22;
-            // 
-            // labelCountdown
-            // 
-            this.labelCountdown.AutoSize = true;
-            this.labelCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCountdown.ForeColor = System.Drawing.Color.Red;
-            this.labelCountdown.Location = new System.Drawing.Point(252, 251);
-            this.labelCountdown.Name = "labelCountdown";
-            this.labelCountdown.Size = new System.Drawing.Size(122, 120);
-            this.labelCountdown.TabIndex = 2;
-            this.labelCountdown.Text = "X";
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(112, 147);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(393, 71);
-            this.textBoxPassword.TabIndex = 1;
-            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(101, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(422, 64);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Enter Password";
-            // 
             // FormSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +385,7 @@
             this.Controls.Add(this.pictureBoxCamera);
             this.Name = "FormSetup";
             this.Text = "FormSetup";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSetup_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSensitivity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThreshold)).EndInit();

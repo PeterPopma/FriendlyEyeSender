@@ -109,7 +109,8 @@ namespace FriendlyEyeSender
                             for (int x_sub = 0; x_sub < sizeAnalysisChunks; x_sub++)
                             {
                                 int x_abs = x + x_sub;
-                                if (!useMask || mask[y_abs][x_abs] == true)
+                                // note that mask may just be cleared by different thread..
+                                if (!useMask || (mask[y_abs]!=null && mask[y_abs][x_abs] == true))
                                 {
                                     int offsetX = x_abs * bytesPerPixel;
 

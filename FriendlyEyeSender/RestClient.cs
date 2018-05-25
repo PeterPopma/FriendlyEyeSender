@@ -27,13 +27,14 @@ namespace FriendlyEyeSender
                 new MediaTypeWithQualityHeaderValue("application/xml"));
         }
 
-        public void PostImage(byte[] image, string filename, string name, string telephone, string address, int number)
+        public void PostImage(byte[] image, string filename, int imageset_number, int sequence_number, string name, string telephone, string address)
         {
             NameValueCollection nvc = new NameValueCollection();
-            nvc.Add("name", name);
+            nvc.Add("clientname", name);
             nvc.Add("telephone", telephone);
             nvc.Add("address", address);
-            nvc.Add("number", number.ToString());
+            nvc.Add("imageset_number", imageset_number.ToString());
+            nvc.Add("sequence_number", sequence_number.ToString());
 
             string url = "http://localhost:8000/newimage";
             Debug.Write(string.Format("Calling {0}", url));
@@ -48,7 +49,7 @@ namespace FriendlyEyeSender
             return stream;
         }
 
-        public static void HttpUploadImage(string url, string imageName, byte[] image, NameValueCollection nvc)
+        public static void HttpUploadImage(string url, string imageName, byte[] image, NameValueCollection nvc) 
         {
             string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
             byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
@@ -58,15 +59,26 @@ namespace FriendlyEyeSender
             wr.Method = "POST";
             wr.KeepAlive = true;
             wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
+            Stream rs;
 
-            Stream rs = wr.GetRequestStream();
-
-            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
-            foreach (string key in nvc.Keys)
+            try
             {
-                rs.Write(boundarybytes, 0, boundarybytes.Length);
-                string formitem = string.Format(formdataTemplate, key, nvc[key]);
-                byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
+                rs = wr.GetRequestStream();
+            } catch(Exception)
+            {
+                Console.WriteLine("Could not connect to server!");
+                return;
+            }
+
+            rs.Write(boundarybytes, 0, boundarybytes.Length);
+            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n";
+            string formitem = string.Format(formdataTemplate, "imageinfo");
+            byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
+            rs.Write(formitembytes, 0, formitembytes.Length);
+            foreach (string key in nvc.AllKeys)
+            {
+                formitem = key + "=\"" + nvc[key] + "\"\r\n";
+                formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
                 rs.Write(formitembytes, 0, formitembytes.Length);
             }
             rs.Write(boundarybytes, 0, boundarybytes.Length);

@@ -43,7 +43,7 @@ namespace FriendlyEyeSender.Forms
         DetectionObject currentObject = null;
         DetectionSystem detectionSystem = new DetectionSystem();
         bool isProcessing;
-        bool countDownStarted;
+        bool dangerDetected;
         int randomToken;
 
         RestClient restClient = new RestClient();
@@ -75,16 +75,11 @@ namespace FriendlyEyeSender.Forms
             }
             else
             {
-                if (!countDownStarted)
+                if (!dangerDetected)
                 {
                     if (detectionSystem.DangerValue > detectionSystem.Threshold)
                     {
-                        countDownStarted = true;
-                        panelDisarm.Visible = true;
-                        timeDangerStarted = new DateTime();
-
-                        numFramesSent = 1;
-                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + numFramesSent + "_" + randomToken, NameClient, Telephone, Address, numFramesSent);
+                        dangerDetected = true;
                     }
                 }
                 else
@@ -92,17 +87,18 @@ namespace FriendlyEyeSender.Forms
                     if(numFramesSent<MAX_NUM_FRAMES_SENT)
                     {
                         numFramesSent++;
-                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + numFramesSent + "_" + randomToken, NameClient, Telephone, Address, numFramesSent);
+                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + "_" + randomToken + "_" + numFramesSent, randomToken, numFramesSent, NameClient, Telephone, Address);
                     }
-                    int secondsInDanger = (DateTime.Now - timeDangerStarted).Seconds;
-                    labelCountdown.Text = secondsInDanger.ToString();
-                    if(secondsInDanger>10)
+                    else
                     {
-                        // TODO send pictures or confirm police has been warned
+                        updateScreenTimer.Stop();
+                        CloseFile();
+                        Close();
+                        FormCountdown formCountdown = new FormCountdown();
+                        formCountdown.Show();
                     }
                 }
             }
-
             pictureBoxCamera.Invalidate();
         }
 
@@ -141,7 +137,7 @@ namespace FriendlyEyeSender.Forms
             panelDisarm.Visible = false;
             UpdateRegionButtons();
             detectionSystem.Threshold = Convert.ToInt32(numericUpDownThreshold.Value);
-            randomToken = new Random().Next(10000, 99999);
+            randomToken = new Random().Next(100000, 999999);
 
             // Go Fullscreen
             /*
@@ -333,17 +329,20 @@ namespace FriendlyEyeSender.Forms
 
         private void MouseUp()
         {
-            mouseDown = false;
-            currentObject = new DetectionObject(RectScreenToCamera(new Rectangle(Math.Min(mouseDownPoint.X, mouseUpPoint.X),
-                    Math.Min(mouseDownPoint.Y, mouseUpPoint.Y),
-                    Math.Max(mouseDownPoint.X, mouseUpPoint.X) - Math.Min(mouseDownPoint.X, mouseUpPoint.X),
-                    Math.Max(mouseDownPoint.Y, mouseUpPoint.Y) - Math.Min(mouseDownPoint.Y, mouseUpPoint.Y))));
-            detectionSystem.DetectionObjects.Add(currentObject);
-            currentObjectNumber = detectionSystem.DetectionObjects.Count;
-            Cursor = Cursors.Default;
-            UpdateRegionButtons();
-            detectionSystem.UpdateMask();
-            createNewReferenceImage = true;     // seems to be necessary
+            if (buttonReady.Visible == true)
+            {
+                mouseDown = false;
+                currentObject = new DetectionObject(RectScreenToCamera(new Rectangle(Math.Min(mouseDownPoint.X, mouseUpPoint.X),
+                        Math.Min(mouseDownPoint.Y, mouseUpPoint.Y),
+                        Math.Max(mouseDownPoint.X, mouseUpPoint.X) - Math.Min(mouseDownPoint.X, mouseUpPoint.X),
+                        Math.Max(mouseDownPoint.Y, mouseUpPoint.Y) - Math.Min(mouseDownPoint.Y, mouseUpPoint.Y))));
+                detectionSystem.DetectionObjects.Add(currentObject);
+                currentObjectNumber = detectionSystem.DetectionObjects.Count;
+                Cursor = Cursors.Default;
+                UpdateRegionButtons();
+                detectionSystem.UpdateMask();
+                createNewReferenceImage = true;     // seems to be necessary
+            }
         }
 
         private void UpdateRegionButtons()

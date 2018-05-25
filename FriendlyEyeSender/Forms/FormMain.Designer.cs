@@ -46,15 +46,16 @@
             this.textBoxAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxAddress.Location = new System.Drawing.Point(524, 129);
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(502, 71);
+            this.textBoxAddress.Size = new System.Drawing.Size(754, 71);
             this.textBoxAddress.TabIndex = 15;
+            this.textBoxAddress.Text = "hertenlaan 12, Arnhem";
             // 
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxName.Location = new System.Drawing.Point(524, 32);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(502, 71);
+            this.textBoxName.Size = new System.Drawing.Size(754, 71);
             this.textBoxName.TabIndex = 14;
             this.textBoxName.Text = "Peter";
             // 
@@ -119,7 +120,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label4.Location = new System.Drawing.Point(38, 432);
+            this.label4.Location = new System.Drawing.Point(38, 478);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(476, 64);
             this.label4.TabIndex = 16;
@@ -129,10 +130,11 @@
             // 
             this.textBoxDisarmPassword.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.textBoxDisarmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDisarmPassword.Location = new System.Drawing.Point(521, 429);
+            this.textBoxDisarmPassword.Location = new System.Drawing.Point(521, 475);
             this.textBoxDisarmPassword.Name = "textBoxDisarmPassword";
             this.textBoxDisarmPassword.Size = new System.Drawing.Size(502, 71);
             this.textBoxDisarmPassword.TabIndex = 17;
+            this.textBoxDisarmPassword.Text = "secret";
             // 
             // textBoxTelephone
             // 
@@ -141,6 +143,7 @@
             this.textBoxTelephone.Name = "textBoxTelephone";
             this.textBoxTelephone.Size = new System.Drawing.Size(502, 71);
             this.textBoxTelephone.TabIndex = 19;
+            this.textBoxTelephone.Text = "0621718293";
             // 
             // labelTelephone
             // 

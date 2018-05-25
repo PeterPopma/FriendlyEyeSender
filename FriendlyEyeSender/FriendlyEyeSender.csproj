@@ -135,6 +135,12 @@
     </Compile>
     <Compile Include="DetectionObject.cs" />
     <Compile Include="DetectionSystem.cs" />
+    <Compile Include="Forms\FormCountdown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCountdown.Designer.cs">
+      <DependentUpon>FormCountdown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,12 @@
     </Compile>
     <Compile Include="Forms\FormSetup.Designer.cs">
       <DependentUpon>FormSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWarning.Designer.cs">
+      <DependentUpon>FormWarning.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -195,11 +207,17 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\FormCountdown.resx">
+      <DependentUpon>FormCountdown.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSetup.resx">
       <DependentUpon>FormSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWarning.resx">
+      <DependentUpon>FormWarning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

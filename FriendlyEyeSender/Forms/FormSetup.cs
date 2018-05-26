@@ -91,6 +91,7 @@ namespace FriendlyEyeSender.Forms
                     }
                     else
                     {
+                        new KPNClient().PostSMS(Telephone);       // send out SMS to owner
                         updateScreenTimer.Stop();
                         CloseFile();
                         Close();
@@ -213,6 +214,15 @@ namespace FriendlyEyeSender.Forms
             int y = (int)(scaledRect.Y * (float)camera.Height / pictureBoxCamera.Height);
             int width = (int)(scaledRect.Width * (float)camera.Width / pictureBoxCamera.Width);
             int height = (int)(scaledRect.Height * (float)camera.Height / pictureBoxCamera.Height);
+
+            if (x < 0)
+                x = 0;
+            if (y < 0)
+                y = 0;
+            if (x + width > camera.Width)
+                width = camera.Width - x;
+            if (y + height > camera.Height)
+                height = camera.Height - y;
 
             return new Rectangle(x, y, width, height);
         }

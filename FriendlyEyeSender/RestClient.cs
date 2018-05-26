@@ -18,10 +18,11 @@ namespace FriendlyEyeSender
     class RestClient
     {
         static HttpClient client = new HttpClient();
+        const string HOST_URL = "http://localhost:8000"; //"http://192.168.1.103:8000";
 
         public RestClient()
         {
-            client.BaseAddress = new Uri("http://localhost:8000/");
+            client.BaseAddress = new Uri(HOST_URL);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/xml"));
@@ -36,7 +37,7 @@ namespace FriendlyEyeSender
             nvc.Add("imageset_number", imageset_number.ToString());
             nvc.Add("sequence_number", sequence_number.ToString());
 
-            string url = "http://localhost:8000/newimage";
+            string url = HOST_URL + "/newimage";
             Debug.Write(string.Format("Calling {0}", url));
             HttpUploadImage(url, filename, image, nvc);
         }

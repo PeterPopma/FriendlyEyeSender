@@ -13,11 +13,11 @@ namespace FriendlyEyeSender
     class KPNClient
     {
         static HttpClient client = new HttpClient();
-        const string HOST_URL = "http://localhost:8000"; //"http://192.168.1.103:8000";
+        const string HOST_URL = "http://192.168.1.103:8000";  // "http://localhost:8000"; 
 
         public KPNClient()
         {
-            client.BaseAddress = new Uri(HOST_URL);
+     //       client.BaseAddress = new Uri("");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

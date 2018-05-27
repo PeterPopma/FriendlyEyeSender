@@ -21,6 +21,11 @@ namespace FriendlyEyeSender.Forms
         private static System.Windows.Forms.Timer updateScreenTimer;
         DateTime timeDangerStarted;
         int MAX_WARNING_SECONDS = 10;
+        string telephone;
+        string address;
+
+        public string Telephone { get => telephone; set => telephone = value; }
+        public string Address { get => address; set => address = value; }
 
         public FormCountdown()
         {
@@ -55,6 +60,11 @@ namespace FriendlyEyeSender.Forms
                 updateScreenTimer.Stop();
                 Close();
             }
+        }
+
+        private void FormCountdown_Shown(object sender, EventArgs e)
+        {
+            new KPNClient().PostSMS(Telephone, Address);       // send out SMS to owner
         }
     }
 }

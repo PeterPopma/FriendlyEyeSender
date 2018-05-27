@@ -93,11 +93,12 @@ namespace FriendlyEyeSender.Forms
                     }
                     else
                     {
-                        new KPNClient().PostSMS(Telephone, address);       // send out SMS to owner
                         updateScreenTimer.Stop();
                         CloseFile();
                         Close();
                         FormCountdown formCountdown = new FormCountdown();
+                        formCountdown.Address = address;
+                        formCountdown.Telephone = telephone;
                         formCountdown.Show();
                     }
                 }

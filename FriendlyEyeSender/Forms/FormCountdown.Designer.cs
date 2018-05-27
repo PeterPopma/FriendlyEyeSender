@@ -85,6 +85,7 @@
             this.Controls.Add(this.panelDisarm);
             this.Name = "FormCountdown";
             this.Text = "FormCountdown";
+            this.Shown += new System.EventHandler(this.FormCountdown_Shown);
             this.panelDisarm.ResumeLayout(false);
             this.panelDisarm.PerformLayout();
             this.ResumeLayout(false);

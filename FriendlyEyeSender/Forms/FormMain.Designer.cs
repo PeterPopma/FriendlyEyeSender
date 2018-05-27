@@ -39,6 +39,8 @@
             this.textBoxDisarmPassword = new System.Windows.Forms.TextBox();
             this.textBoxTelephone = new System.Windows.Forms.TextBox();
             this.labelTelephone = new System.Windows.Forms.Label();
+            this.textBoxPostalCode = new System.Windows.Forms.TextBox();
+            this.textBoxHouseNumber = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxAddress
@@ -155,11 +157,31 @@
             this.labelTelephone.TabIndex = 18;
             this.labelTelephone.Text = "Telephone:";
             // 
+            // textBoxPostalCode
+            // 
+            this.textBoxPostalCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPostalCode.Location = new System.Drawing.Point(1321, 129);
+            this.textBoxPostalCode.Name = "textBoxPostalCode";
+            this.textBoxPostalCode.Size = new System.Drawing.Size(216, 71);
+            this.textBoxPostalCode.TabIndex = 20;
+            this.textBoxPostalCode.Text = "6823LE";
+            // 
+            // textBoxHouseNumber
+            // 
+            this.textBoxHouseNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxHouseNumber.Location = new System.Drawing.Point(1575, 129);
+            this.textBoxHouseNumber.Name = "textBoxHouseNumber";
+            this.textBoxHouseNumber.Size = new System.Drawing.Size(101, 71);
+            this.textBoxHouseNumber.TabIndex = 21;
+            this.textBoxHouseNumber.Text = "12";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.textBoxHouseNumber);
+            this.Controls.Add(this.textBoxPostalCode);
             this.Controls.Add(this.textBoxTelephone);
             this.Controls.Add(this.labelTelephone);
             this.Controls.Add(this.textBoxDisarmPassword);
@@ -191,5 +213,7 @@
         private System.Windows.Forms.TextBox textBoxTelephone;
         private System.Windows.Forms.Label labelTelephone;
         internal System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxPostalCode;
+        private System.Windows.Forms.TextBox textBoxHouseNumber;
     }
 }

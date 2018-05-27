@@ -43,6 +43,7 @@ namespace FriendlyEyeSender.Forms
             formSetup.MyParent = this;
             formSetup.DisarmPassword = textBoxDisarmPassword.Text;
             formSetup.Purpose = comboBoxPurpose.Text;
+            formSetup.PostalCode = textBoxPostalCode.Text + textBoxHouseNumber.Text;
             formSetup.Show();
         }
 

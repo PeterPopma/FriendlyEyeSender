@@ -59,6 +59,7 @@ namespace FriendlyEyeSender.Forms
         public string Address { get => address; set => address = value; }
         public string Telephone { get => telephone; set => telephone = value; }
         public string Purpose { get => purpose; set => purpose = value; }
+        public string PostalCode { get => purpose; set => purpose = value; }
 
         private void SetupTimer()
         {
@@ -89,7 +90,7 @@ namespace FriendlyEyeSender.Forms
                     if(numFramesSent<MAX_NUM_FRAMES_SENT)
                     {
                         numFramesSent++;
-                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + "_" + randomToken + "_" + numFramesSent, randomToken, numFramesSent, NameClient, Telephone, Address, Purpose);
+                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + "_" + randomToken + "_" + numFramesSent, randomToken, numFramesSent, NameClient, Telephone, Address, Purpose, PostalCode);
                     }
                     else
                     {

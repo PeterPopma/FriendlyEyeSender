@@ -36,6 +36,7 @@ namespace FriendlyEyeSender.Forms
         string nameClient;
         string address;
         string telephone;
+        string purpose;
 
         bool createNewReferenceImage = false;
 
@@ -57,6 +58,7 @@ namespace FriendlyEyeSender.Forms
         public string NameClient { get => nameClient; set => nameClient = value; }
         public string Address { get => address; set => address = value; }
         public string Telephone { get => telephone; set => telephone = value; }
+        public string Purpose { get => purpose; set => purpose = value; }
 
         private void SetupTimer()
         {
@@ -87,11 +89,11 @@ namespace FriendlyEyeSender.Forms
                     if(numFramesSent<MAX_NUM_FRAMES_SENT)
                     {
                         numFramesSent++;
-                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + "_" + randomToken + "_" + numFramesSent, randomToken, numFramesSent, NameClient, Telephone, Address);
+                        restClient.PostImage(detectionSystem.BitmapCameraCopy, NameClient + "_" + randomToken + "_" + numFramesSent, randomToken, numFramesSent, NameClient, Telephone, Address, Purpose);
                     }
                     else
                     {
-                        new KPNClient().PostSMS(Telephone);       // send out SMS to owner
+                        new KPNClient().PostSMS(Telephone, address);       // send out SMS to owner
                         updateScreenTimer.Stop();
                         CloseFile();
                         Close();

@@ -23,7 +23,7 @@ namespace FriendlyEyeSender
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public void PostSMS(string telephoneNumber)
+        public void PostSMS(string telephoneNumber, string address)
         {
             HttpResponseMessage response = null;
             string access_token = "";
@@ -63,7 +63,7 @@ namespace FriendlyEyeSender
                 new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Add("authorization", "BearerToken " + access_token);
 
-            SMSMessage smsMessage = new SMSMessage("Warning! Suspicous activity", telephoneNumber);
+            SMSMessage smsMessage = new SMSMessage("Warning! Suspicous activity on: " + address, telephoneNumber);
             SMS sms = new SMS("Friendly Eye");
             sms.messages.Add(smsMessage);
             string jsonString = sms.ToJSON();

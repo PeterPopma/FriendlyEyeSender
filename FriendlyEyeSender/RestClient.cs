@@ -28,7 +28,7 @@ namespace FriendlyEyeSender
                 new MediaTypeWithQualityHeaderValue("application/xml"));
         }
 
-        public void PostImage(byte[] image, string filename, int imageset_number, int sequence_number, string name, string telephone, string address)
+        public void PostImage(byte[] image, string filename, int imageset_number, int sequence_number, string name, string telephone, string address, string purpose)
         {
             NameValueCollection nvc = new NameValueCollection();
             nvc.Add("clientname", name);
@@ -36,6 +36,7 @@ namespace FriendlyEyeSender
             nvc.Add("address", address);
             nvc.Add("imageset_number", imageset_number.ToString());
             nvc.Add("sequence_number", sequence_number.ToString());
+            nvc.Add("purpose", purpose);
 
             string url = HOST_URL + "/newimage";
             Debug.Write(string.Format("Calling {0}", url));

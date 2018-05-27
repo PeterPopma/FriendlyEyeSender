@@ -42,6 +42,7 @@ namespace FriendlyEyeSender.Forms
             formSetup.Telephone = textBoxTelephone.Text;
             formSetup.MyParent = this;
             formSetup.DisarmPassword = textBoxDisarmPassword.Text;
+            formSetup.Purpose = comboBoxPurpose.Text;
             formSetup.Show();
         }
 

@@ -23,10 +23,11 @@ namespace FriendlyEyeSender.Forms
             InitializeComponent();
 
             // Go Fullscreen
-            WindowState = FormWindowState.Maximized;
+/*            WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.None;
             TopMost = true;
             SetWindowPos(Handle, IntPtr.Zero, 0, 0, GetSystemMetrics(0), GetSystemMetrics(1), 64);
+            */
         }
     }
 }

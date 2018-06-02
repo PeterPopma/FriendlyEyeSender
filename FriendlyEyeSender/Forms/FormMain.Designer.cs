@@ -41,6 +41,8 @@
             this.labelTelephone = new System.Windows.Forms.Label();
             this.textBoxPostalCode = new System.Windows.Forms.TextBox();
             this.textBoxHouseNumber = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxAddress
@@ -48,9 +50,9 @@
             this.textBoxAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxAddress.Location = new System.Drawing.Point(524, 129);
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(754, 71);
+            this.textBoxAddress.Size = new System.Drawing.Size(419, 71);
             this.textBoxAddress.TabIndex = 15;
-            this.textBoxAddress.Text = "hertenlaan 12, Arnhem";
+            this.textBoxAddress.Text = "hertenlaan";
             // 
             // textBoxName
             // 
@@ -92,9 +94,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(182, 132);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(249, 64);
+            this.label2.Size = new System.Drawing.Size(194, 64);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Address:";
+            this.label2.Text = "Street:";
             // 
             // label1
             // 
@@ -160,7 +162,7 @@
             // textBoxPostalCode
             // 
             this.textBoxPostalCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPostalCode.Location = new System.Drawing.Point(1321, 129);
+            this.textBoxPostalCode.Location = new System.Drawing.Point(1549, 132);
             this.textBoxPostalCode.Name = "textBoxPostalCode";
             this.textBoxPostalCode.Size = new System.Drawing.Size(216, 71);
             this.textBoxPostalCode.TabIndex = 20;
@@ -169,19 +171,41 @@
             // textBoxHouseNumber
             // 
             this.textBoxHouseNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxHouseNumber.Location = new System.Drawing.Point(1575, 129);
+            this.textBoxHouseNumber.Location = new System.Drawing.Point(1117, 129);
             this.textBoxHouseNumber.Name = "textBoxHouseNumber";
             this.textBoxHouseNumber.Size = new System.Drawing.Size(101, 71);
             this.textBoxHouseNumber.TabIndex = 21;
             this.textBoxHouseNumber.Text = "12";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1008, 132);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 64);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Nr:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(1270, 135);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(277, 64);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Postcode:";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.textBoxHouseNumber);
             this.Controls.Add(this.textBoxPostalCode);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBoxHouseNumber);
             this.Controls.Add(this.textBoxTelephone);
             this.Controls.Add(this.labelTelephone);
             this.Controls.Add(this.textBoxDisarmPassword);
@@ -215,5 +239,7 @@
         internal System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxPostalCode;
         private System.Windows.Forms.TextBox textBoxHouseNumber;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

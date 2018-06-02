@@ -33,10 +33,10 @@ namespace FriendlyEyeSender.Forms
             SetupTimer();
             timeDangerStarted = DateTime.Now;
             // Go Fullscreen
-            WindowState = FormWindowState.Maximized;
+/*            WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.None;
             TopMost = true;
-            SetWindowPos(Handle, IntPtr.Zero, 0, 0, GetSystemMetrics(0), GetSystemMetrics(1), 64);
+            SetWindowPos(Handle, IntPtr.Zero, 0, 0, GetSystemMetrics(0), GetSystemMetrics(1), 64);*/
         }
 
         private void SetupTimer()
@@ -64,7 +64,7 @@ namespace FriendlyEyeSender.Forms
 
         private void FormCountdown_Shown(object sender, EventArgs e)
         {
-            new KPNClient().PostSMS(Telephone, Address);       // send out SMS to owner
+//            new KPNClient().PostSMS(Telephone, Address);       // send out SMS to owner
         }
     }
 }

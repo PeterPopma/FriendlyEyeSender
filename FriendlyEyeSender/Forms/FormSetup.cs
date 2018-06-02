@@ -37,6 +37,7 @@ namespace FriendlyEyeSender.Forms
         string address;
         string telephone;
         string purpose;
+        string postalcode;
 
         bool createNewReferenceImage = false;
 
@@ -59,7 +60,7 @@ namespace FriendlyEyeSender.Forms
         public string Address { get => address; set => address = value; }
         public string Telephone { get => telephone; set => telephone = value; }
         public string Purpose { get => purpose; set => purpose = value; }
-        public string PostalCode { get => purpose; set => purpose = value; }
+        public string PostalCode { get => postalcode; set => postalcode = value; }
 
         private void SetupTimer()
         {
@@ -95,12 +96,12 @@ namespace FriendlyEyeSender.Forms
                     else
                     {
                         updateScreenTimer.Stop();
-                        CloseFile();
-                        Close();
                         FormCountdown formCountdown = new FormCountdown();
                         formCountdown.Address = address;
                         formCountdown.Telephone = telephone;
                         formCountdown.Show();
+                        CloseFile();
+                        Close();
                     }
                 }
             }
@@ -350,12 +351,15 @@ namespace FriendlyEyeSender.Forms
                         Math.Min(mouseDownPoint.Y, mouseUpPoint.Y),
                         Math.Max(mouseDownPoint.X, mouseUpPoint.X) - Math.Min(mouseDownPoint.X, mouseUpPoint.X),
                         Math.Max(mouseDownPoint.Y, mouseUpPoint.Y) - Math.Min(mouseDownPoint.Y, mouseUpPoint.Y))));
-                detectionSystem.DetectionObjects.Add(currentObject);
-                currentObjectNumber = detectionSystem.DetectionObjects.Count;
                 Cursor = Cursors.Default;
-                UpdateRegionButtons();
-                detectionSystem.UpdateMask();
-                createNewReferenceImage = true;     // seems to be necessary
+                if (currentObject.Rectangle.Width > 2 && currentObject.Rectangle.Height > 2)        // avoid storing very small regions
+                {
+                    detectionSystem.DetectionObjects.Add(currentObject);
+                    currentObjectNumber = detectionSystem.DetectionObjects.Count;
+                    UpdateRegionButtons();
+                    detectionSystem.UpdateMask();
+                    createNewReferenceImage = true;     // seems to be necessary
+                }
             }
         }
 

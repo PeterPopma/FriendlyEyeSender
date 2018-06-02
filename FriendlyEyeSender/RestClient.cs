@@ -18,7 +18,7 @@ namespace FriendlyEyeSender
     class RestClient
     {
         static HttpClient client = new HttpClient();
-        const string HOST_URL = "http://192.168.1.103:8000";   //"http://localhost:8000"; //";
+        const string HOST_URL = "http://localhost:8000"; //"http://192.168.1.103:8000";   //"http://localhost:8000"; //";
 
         public RestClient()
         {
